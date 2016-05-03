@@ -72,7 +72,7 @@ namespace Hurricane.Music.Track
                 }
                 kHz = info.Properties.AudioSampleRate / 1000;
                 Year = info.Tag.Year;
-                SetDuration(info.Properties.Duration);
+                DurationTimespan = info.Properties.Duration;
             }
             return true;
         }
@@ -104,7 +104,7 @@ namespace Hurricane.Music.Track
                 });
 
                 kHz = samplerate / 1000;
-                SetDuration(duration);
+                DurationTimespan = duration;
                 IsChecked = true;
             }
             catch (Exception)
@@ -130,7 +130,7 @@ namespace Hurricane.Music.Track
 
         public void ResetDuration(TimeSpan timeSpan)
         {
-            SetDuration(timeSpan);
+            DurationTimespan = timeSpan;
         }
 
         public override bool TrackExists
