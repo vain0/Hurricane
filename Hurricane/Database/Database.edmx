@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HurricaneModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="local_tracks">
+          <Key>
+            <PropertyRef Name="TrackId" />
+          </Key>
+          <Property Name="TrackId" Type="int" Nullable="false" />
+          <Property Name="Path" Type="text" Nullable="false" />
+          <Property Name="Extension" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="playlist_items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlaylistId" Type="int" Nullable="false" />
+          <Property Name="TrackId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="playlists">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tracks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="text" Nullable="false" />
+          <Property Name="Artist" Type="text" Nullable="false" />
+          <Property Name="Duration" Type="time" Precision="0" Nullable="false" />
+          <Property Name="Album" Type="text" Nullable="false" />
+          <Property Name="TrackNumber" Type="int" Nullable="false" />
+          <Property Name="Year" Type="year" Nullable="false" />
+          <Property Name="kHz" Type="int" Nullable="false" />
+          <Property Name="kbps" Type="int" Nullable="false" />
+          <Property Name="AuthenticationCode" Type="bigint" Nullable="false" />
+          <Property Name="TimeAdded" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="LastTimePlayed" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="IsFavorite" Type="bool" Nullable="false" />
+          <Property Name="TrackType" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HurricaneModelStoreContainer">
+          <EntitySet Name="local_tracks" EntityType="Self.local_tracks" Schema="hurricane" store:Type="Tables" />
+          <EntitySet Name="playlist_items" EntityType="Self.playlist_items" Schema="hurricane" store:Type="Tables" />
+          <EntitySet Name="playlists" EntityType="Self.playlists" Schema="hurricane" store:Type="Tables" />
+          <EntitySet Name="tracks" EntityType="Self.tracks" Schema="hurricane" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HurricaneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HurricaneEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="local_tracks" EntityType="HurricaneModel.local_tracks" />
+          <EntitySet Name="playlist_items" EntityType="HurricaneModel.playlist_items" />
+          <EntitySet Name="playlists" EntityType="HurricaneModel.playlist" />
+          <EntitySet Name="tracks" EntityType="HurricaneModel.track" />
+        </EntityContainer>
+        <EntityType Name="local_tracks">
+          <Key>
+            <PropertyRef Name="TrackId" />
+          </Key>
+          <Property Name="TrackId" Type="Int32" Nullable="false" />
+          <Property Name="Path" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Extension" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="playlist_items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlaylistId" Type="Int32" Nullable="false" />
+          <Property Name="TrackId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="playlist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="track">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Artist" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Duration" Type="Time" Nullable="false" />
+          <Property Name="Album" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="TrackNumber" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int16" Nullable="false" />
+          <Property Name="kHz" Type="Int32" Nullable="false" />
+          <Property Name="kbps" Type="Int32" Nullable="false" />
+          <Property Name="AuthenticationCode" Type="Int64" Nullable="false" />
+          <Property Name="TimeAdded" Type="DateTime" Nullable="false" />
+          <Property Name="LastTimePlayed" Type="DateTime" Nullable="false" />
+          <Property Name="IsFavorite" Type="Boolean" Nullable="false" />
+          <Property Name="TrackType" Type="SByte" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HurricaneModelStoreContainer" CdmEntityContainer="HurricaneEntities">
+          <EntitySetMapping Name="local_tracks">
+            <EntityTypeMapping TypeName="HurricaneModel.local_tracks">
+              <MappingFragment StoreEntitySet="local_tracks">
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="TrackId" ColumnName="TrackId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="playlist_items">
+            <EntityTypeMapping TypeName="HurricaneModel.playlist_items">
+              <MappingFragment StoreEntitySet="playlist_items">
+                <ScalarProperty Name="TrackId" ColumnName="TrackId" />
+                <ScalarProperty Name="PlaylistId" ColumnName="PlaylistId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="playlists">
+            <EntityTypeMapping TypeName="HurricaneModel.playlist">
+              <MappingFragment StoreEntitySet="playlists">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tracks">
+            <EntityTypeMapping TypeName="HurricaneModel.track">
+              <MappingFragment StoreEntitySet="tracks">
+                <ScalarProperty Name="TrackType" ColumnName="TrackType" />
+                <ScalarProperty Name="IsFavorite" ColumnName="IsFavorite" />
+                <ScalarProperty Name="LastTimePlayed" ColumnName="LastTimePlayed" />
+                <ScalarProperty Name="TimeAdded" ColumnName="TimeAdded" />
+                <ScalarProperty Name="AuthenticationCode" ColumnName="AuthenticationCode" />
+                <ScalarProperty Name="kbps" ColumnName="kbps" />
+                <ScalarProperty Name="kHz" ColumnName="kHz" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="TrackNumber" ColumnName="TrackNumber" />
+                <ScalarProperty Name="Album" ColumnName="Album" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Artist" ColumnName="Artist" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="なし" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
