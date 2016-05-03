@@ -69,7 +69,6 @@
     <system:String x:Key="Title">Title</system:String>
     <system:String x:Key="Artist">Artist</system:String>
     <system:String x:Key="Album">Album</system:String>
-    <system:String x:Key="Genre">Genre</system:String>
     <system:String x:Key="Year">Year</system:String>
     <system:String x:Key="Format">Format</system:String>
     <system:String x:Key="Duration">Duration</system:String>

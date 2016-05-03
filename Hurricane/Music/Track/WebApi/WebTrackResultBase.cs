@@ -94,9 +94,7 @@ namespace Hurricane.Music.Track.WebApi
         {
             return Image;
         }
-
-        public List<Genre> Genres { get; set; }
-
+        
         public string Album { get; set; }
 
 

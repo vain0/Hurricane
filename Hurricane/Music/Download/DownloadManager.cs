@@ -41,8 +41,6 @@ namespace Hurricane.Music.Download
                     file.Tag.Album = information.Album;
                     file.Tag.Performers = new[] { information.Artist };
                     file.Tag.Year = information.Year;
-                    if (information.Genres != null)
-                        file.Tag.Genres = information.Genres.Select(x => x.ToString()).ToArray();
                     file.Tag.Title = information.Title;
                     var image = await information.GetImage();
                     if (image != null)

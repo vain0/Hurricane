@@ -60,7 +60,6 @@ namespace Hurricane.Music.Track
                 Artist = RemoveInvalidXmlChars(!string.IsNullOrWhiteSpace(info.Tag.FirstPerformer) ? info.Tag.FirstPerformer : info.Tag.FirstAlbumArtist);
                 Title = !string.IsNullOrWhiteSpace(info.Tag.Title) ? RemoveInvalidXmlChars(info.Tag.Title) : System.IO.Path.GetFileNameWithoutExtension(filename.FullName);
                 Album = RemoveInvalidXmlChars(info.Tag.Album);
-                Genres = new List<Genre>(info.Tag.Genres.Select(StringToGenre));
 
                 if (info.Properties.AudioBitrate > 56000) //No idea what TagLib# is thinking, but sometimes it shows the bitrate * 1000
                 {
