@@ -188,26 +188,7 @@ namespace Hurricane.Music.Track.WebApi
                 }));
             }
         }
-
-        private RelayCommand _downloadTrack;
-        public RelayCommand DownloadTrack
-        {
-            get
-            {
-                return _downloadTrack ?? (_downloadTrack = new RelayCommand(parameter =>
-                {
-                    var track = SelectedTrack;
-                    if (track == null) return;
-                    var downloadDialog = new DownloadTrackWindow(track.DownloadFilename, DownloadManager.GetExtension(track)) { Owner = _baseWindow };
-                    if (downloadDialog.ShowDialog() == true)
-                    {
-                        _manager.DownloadManager.AddEntry(track, downloadDialog.DownloadSettings.Clone(), downloadDialog.SelectedPath);
-                        _manager.DownloadManager.IsOpen = true;
-                    }
-                }));
-            }
-        }
-
+        
         private RelayCommand _addPlaylistToNewPlaylist;
         public RelayCommand AddPlaylistToNewPlaylist
         {

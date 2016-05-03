@@ -6,7 +6,6 @@ namespace Hurricane.Music.Track
     {
         string DownloadParameter { get; }
         string DownloadFilename { get; }
-        DownloadMethod DownloadMethod { get; }
         bool CanDownload { get; }
     }
 }

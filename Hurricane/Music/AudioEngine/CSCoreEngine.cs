@@ -30,7 +30,6 @@ namespace Hurricane.Music.AudioEngine
         private PlayableBase _currenttrack;
         private TimeSpan _currentTrackPosition;
         private EqualizerSettings _equalizerSettings;
-        private bool _isdisposing;
 
         private bool _isEnabled;
         private bool _isfadingout;
@@ -536,7 +535,6 @@ namespace Hurricane.Music.AudioEngine
 
         private void soundOut_Stopped(object sender, PlaybackStoppedEventArgs e)
         {
-            if (_isdisposing) return;
             if (_manualstop)
             {
                 _manualstop = false;

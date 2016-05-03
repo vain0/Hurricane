@@ -34,12 +34,7 @@ namespace Hurricane.Music.Download
         public bool IsConverterEnabled { get; set; }
         public AudioBitrate Bitrate { get; set; }
         public AudioFormat Format { get; set; }
-
-        public string GetExtension(IDownloadable track)
-        {
-            return GetExtension(DownloadManager.GetExtension(track));
-        }
-
+        
         public string GetExtension(string defaultExtension)
         {
             switch (Format)

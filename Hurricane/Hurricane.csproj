@@ -280,8 +280,6 @@
     <Compile Include="Music\Download\DownloadEntry.cs" />
     <Compile Include="Music\Download\DownloadManager.cs" />
     <Compile Include="Music\Download\DownloadProgress.cs" />
-    <Compile Include="Music\Download\SoundCloudDownloader.cs" />
-    <Compile Include="Music\Download\youtube-dl.cs" />
     <Compile Include="Music\Playlist\FavoriteList.cs" />
     <Compile Include="Music\Data\IRepresentable.cs" />
     <Compile Include="Music\Data\SoundOutRepresenter.cs" />
@@ -329,7 +327,6 @@
     <Compile Include="Music\API\CommandFunction.cs" />
     <Compile Include="Music\API\CommandAction.cs" />
     <Compile Include="Music\API\TcpConnection.cs" />
-    <Compile Include="Music\API\TcpServer.cs" />
     <Compile Include="Settings\ConfigSettings.cs" />
     <Compile Include="Settings\Converter\BitrateToIndexConverter.cs" />
     <Compile Include="Settings\Converter\EnumToBooleanConverter.cs" />

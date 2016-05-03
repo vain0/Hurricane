@@ -22,7 +22,6 @@ namespace Hurricane.MagicArrow
         private StrokeWindow _strokeWindow;
         private bool _magicArrowIsShown;
         private bool _isInZone;
-        private bool _mouseWasOver;
 
         public MagicArrow()
         {
@@ -179,7 +178,6 @@ namespace Hurricane.MagicArrow
             _strokeWindow.MouseDown += StrokeWindowMouseDown;
             _activewindowhook.Hook();
             _activewindowhook.RaiseOne(); //If the current window is fullscreen, the event wouldn't be raised (because nothing changed)
-            _mouseWasOver = false;
         }
 
         void StrokeWindowMouseDown(object sender, MouseButtonEventArgs e)
@@ -206,7 +204,6 @@ namespace Hurricane.MagicArrow
                 var screen = WpfScreen.GetScreenFrom(p);
                 ShowMagicArrow(p.Y + screen.WorkingArea.Top, _movedOutSide);
             }
-            _mouseWasOver = true;
         }
 
         void StrokeWindowMouseLeave(object sender, MouseEventArgs e)

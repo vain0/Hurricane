@@ -331,82 +331,7 @@ namespace Hurricane.ViewModels
                 }));
             }
         }
-
-        private RelayCommand _convertStreamToLocalTrack;
-        public RelayCommand ConvertStreamToLocalTrack
-        {
-            get
-            {
-                return _convertStreamToLocalTrack ?? (_convertStreamToLocalTrack = new RelayCommand(async parameter =>
-                {
-                    var track = MusicManager.SelectedTrack as StreamableBase;
-                    if (track == null) return;
-                    if (!track.CanDownload) return;
-
-                    var downloadDialog = new DownloadTrackWindow(track.DownloadFilename, DownloadManager.GetExtension(track)) { Owner = _baseWindow };
-                    if (downloadDialog.ShowDialog() == true)
-                    {
-                        var controller = await _baseWindow.ShowProgressAsync(Application.Current.Resources["Download"].ToString(), MusicManager.SelectedTrack.Title);
-
-                        if (await
-                            DownloadManager.DownloadAndConfigureTrack(track, track, downloadDialog.SelectedPath,
-                                d =>
-                                {
-                                    controller.SetProgress(d / 100);
-                                }, downloadDialog.DownloadSettings.Clone()))
-                        {
-                            var newTrack = new LocalTrack { Path = downloadDialog.SelectedPath };
-                            if (await newTrack.LoadInformation())
-                            {
-                                newTrack.TimeAdded = track.TimeAdded;
-                                newTrack.Artist = track.Artist;
-                                newTrack.Year = track.Year;
-                                newTrack.Title = track.Title;
-                                newTrack.Album = track.Album;
-                                newTrack.Genres = track.Genres;
-
-                                if (MusicManager.FavoriteListIsSelected)
-                                {
-                                    foreach (var normalPlaylist in MusicManager.Playlists)
-                                    {
-                                        if (normalPlaylist.Tracks.Contains(track))
-                                        {
-                                            normalPlaylist.Tracks[normalPlaylist.Tracks.IndexOf(track)] = newTrack;
-                                        }
-                                    }
-                                    track.IsFavorite = false; //To remove from the favorite list
-                                }
-                                else
-                                {
-                                    MusicManager.SelectedPlaylist.Tracks[
-                                        MusicManager.SelectedPlaylist.Tracks.IndexOf(track)] = newTrack;
-                                }
-
-                                newTrack.IsFavorite = track.IsFavorite;
-                                if (track.IsOpened)
-                                    MusicManager.PlayTrack(newTrack, MusicManager.SelectedPlaylist);
-
-                                await controller.CloseAsync();
-                            }
-                            else
-                            {
-                                await controller.CloseAsync();
-                                await
-                                    _baseWindow.WindowDialogService.ShowMessage(
-                                        Application.Current.Resources["ExceptionConvertTrack"].ToString(),
-                                        Application.Current.Resources["Exception"].ToString(), false, DialogMode.Single);
-                            }
-                        }
-                        else
-                        {
-                            await controller.CloseAsync();
-                            await _baseWindow.WindowDialogService.ShowMessage(Application.Current.Resources["ExceptionConvertTrack"].ToString(), Application.Current.Resources["Exception"].ToString(), false, DialogMode.Single);
-                        }
-                    }
-                }));
-            }
-        }
-
+        
         private RelayCommand _downloadAllStreams;
         public RelayCommand DownloadAllStreams
         {
@@ -431,29 +356,7 @@ namespace Hurricane.ViewModels
                                 return;
                             }
                             controller.SetMessage(string.Format(Application.Current.Resources["TrackIsDownloading"].ToString(), track.Title));
-                            var downloadFile = new FileInfo(Path.Combine(downloadDialog.SelectedPath, track.DownloadFilename + downloadSettings.GetExtension(track)));
-                            if (downloadFile.Exists) continue;
-                            var staticTrack = track;
-                            if (await
-                                DownloadManager.DownloadAndConfigureTrack(track, track, downloadFile.FullName,
-                                    d =>
-                                    {
-                                        controller.SetProgress(lst.IndexOf(staticTrack) / (double)lst.Count +
-                                                               1 / (double)lst.Count / 100 * d);
-                                    }, downloadSettings))
-                            {
-                                var newTrack = new LocalTrack { Path = downloadFile.FullName };
-                                if (await newTrack.LoadInformation())
-                                {
-                                    newTrack.TimeAdded = track.TimeAdded;
-                                    newTrack.Artist = track.Artist;
-                                    newTrack.Year = track.Year;
-                                    newTrack.Title = track.Title;
-                                    newTrack.Album = track.Album;
-                                    newTrack.Genres = track.Genres;
-                                    MusicManager.SelectedPlaylist.Tracks[MusicManager.SelectedPlaylist.Tracks.IndexOf(track)] = newTrack;
-                                }
-                            }
+                            continue;
                         }
 
                         MusicManager.SaveToSettings();
