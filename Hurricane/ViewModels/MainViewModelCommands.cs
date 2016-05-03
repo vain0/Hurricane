@@ -13,7 +13,6 @@ using Hurricane.Settings;
 using Hurricane.Utilities;
 using Hurricane.ViewModelBase;
 using Hurricane.Views;
-using Hurricane.Views.MetroDialogs;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
 
@@ -332,53 +331,6 @@ namespace Hurricane.ViewModels
             }
         }
         
-        private RelayCommand _downloadAllStreams;
-        public RelayCommand DownloadAllStreams
-        {
-            get
-            {
-                return _downloadAllStreams ?? (_downloadAllStreams = new RelayCommand(async parameter =>
-                {
-                    var lst = MusicManager.SelectedPlaylist.Tracks.OfType<StreamableBase>().Where(x => x.CanDownload).ToList();
-                    if (!lst.Any()) return;
-
-                    var downloadDialog = new DownloadTrackWindow { Owner = _baseWindow };
-                    if (downloadDialog.ShowDialog() == true)
-                    {
-                        var downloadSettings = downloadDialog.DownloadSettings.Clone();
-                        var controller = await _baseWindow.ShowProgressAsync(Application.Current.Resources["Download"].ToString(), "", true, new MetroDialogSettings { NegativeButtonText = Application.Current.Resources["Cancel"].ToString() });
-                        foreach (var track in lst)
-                        {
-                            if (controller.IsCanceled)
-                            {
-                                await controller.CloseAsync();
-                                return;
-                            }
-                            controller.SetMessage(string.Format(Application.Current.Resources["TrackIsDownloading"].ToString(), track.Title));
-                            continue;
-                        }
-
-                        MusicManager.SaveToSettings();
-                        HurricaneSettings.Instance.Save();
-                        await controller.CloseAsync();
-                    }
-                }));
-            }
-        }
-
-        private RelayCommand _addCustomStream;
-        public RelayCommand AddCustomStream
-        {
-            get
-            {
-                return _addCustomStream ?? (_addCustomStream = new RelayCommand(async parameter =>
-                {
-                    var dialog = new AddCustomStreamView((NormalPlaylist)MusicManager.SelectedPlaylist, MusicManager, x => _baseWindow.HideMetroDialogAsync(x));
-                    await _baseWindow.ShowMetroDialogAsync(dialog);
-                }));
-            }
-        }
-
         private RelayCommand _moveLeftCommand;
         public RelayCommand MoveLeftCommand
         {

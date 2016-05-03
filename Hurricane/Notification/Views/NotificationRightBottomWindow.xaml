@@ -64,31 +64,6 @@
                                 <TextBlock Text="{Binding TrackInformation.Length,Converter={StaticResource RoundSizeConverter}}"/>
                             </StackPanel>
                         </DataTemplate>
-                        <DataTemplate DataType="{x:Type track:StreamableBase}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Duration}" FontWeight="Bold"/>
-                                <TextBlock Text=" - "/>
-                                <Viewbox Height="16" Width="16">
-                                    <Path Data="{Binding ProviderVector}" Fill="{StaticResource TextColor}"/>
-                                </Viewbox>
-                                <TextBlock Text=" :: "/>
-                                <TextBlock Text="{Binding kHz}"/>
-                                <TextBlock Text=" kHz"/>
-                                <StackPanel Orientation="Horizontal">
-                                    <StackPanel.Style>
-                                        <Style TargetType="StackPanel">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Uploader,Converter={StaticResource FalseOnEmptyString}}" Value="false">
-                                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </StackPanel.Style>
-                                    <TextBlock Text=" :: "/>
-                                    <TextBlock Text="{Binding Uploader}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </DataTemplate>
                     </ContentControl.Resources>
                 </ContentControl>
             </StackPanel>

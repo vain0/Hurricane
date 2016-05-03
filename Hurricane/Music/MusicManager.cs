@@ -357,7 +357,7 @@ namespace Hurricane.Music
             currentState.SelectedTrack = SelectedTrack == null ? -1 : SelectedPlaylist.Tracks.IndexOf(SelectedTrack);
             currentState.IsLoopEnabled = IsLoopEnabled;
             currentState.IsShuffleEnabled = IsShuffleEnabled;
-            currentState.TrackPosition = CSCoreEngine.CurrentTrack == null || (CSCoreEngine.CurrentTrack is StreamableBase && ((StreamableBase)CSCoreEngine.CurrentTrack).IsInfinityStream) ? 0 : CSCoreEngine.Position;
+            currentState.TrackPosition = CSCoreEngine.CurrentTrack == null ? 0 : CSCoreEngine.Position;
             currentState.EqualizerSettings = CSCoreEngine.EqualizerSettings;
             currentState.Queue = Queue.Count > 0 ? Queue : null;
         }

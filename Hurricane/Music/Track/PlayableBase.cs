@@ -20,8 +20,7 @@ using Hurricane.ViewModels;
 namespace Hurricane.Music.Track
 {
     [Serializable, XmlType(TypeName = "Playable"),
-     XmlInclude(typeof (LocalTrack)),
-     XmlInclude(typeof (CustomStream))]
+     XmlInclude(typeof (LocalTrack))]
     public abstract class PlayableBase : PropertyChangedBase, IEquatable<PlayableBase>, IRepresentable,
         IMusicInformation
     {

@@ -219,7 +219,6 @@
     <Compile Include="Music\Proxy\HttpProxy.cs" />
     <Compile Include="Music\Proxy\ProxyEntry.cs" />
     <Compile Include="Music\AudioEngine\CutSource.cs" />
-    <Compile Include="Music\Track\CustomStream.cs" />
     <Compile Include="Settings\Converter\GroupConverter.cs" />
     <Compile Include="Settings\Converter\TransitionConverter.cs" />
     <Compile Include="Settings\PasswordEntry.cs" />
@@ -303,7 +302,6 @@
     <Compile Include="Music\Track\LocalTrack.cs" />
     <Compile Include="Music\Track\PlayableBase.cs" />
     <Compile Include="Music\Track\WebApi\LoadingTracksEventArgs.cs" />
-    <Compile Include="Music\Track\StreamableBase.cs" />
     <Compile Include="Music\Track\SoundSourceInfo.cs" />
     <Compile Include="Music\Track\WebApi\TrackSearcher.cs" />
     <Compile Include="Music\Track\WebApi\WebTrackResultBase.cs" />
@@ -414,9 +412,6 @@
     </Compile>
     <Compile Include="Views\ReportExceptionWindow.xaml.cs">
       <DependentUpon>ReportExceptionWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MetroDialogs\AddCustomStreamView.xaml.cs">
-      <DependentUpon>AddCustomStreamView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\EqualizerView.xaml.cs">
       <DependentUpon>EqualizerView.xaml</DependentUpon>
@@ -727,10 +722,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ReportExceptionWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MetroDialogs\AddCustomStreamView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
