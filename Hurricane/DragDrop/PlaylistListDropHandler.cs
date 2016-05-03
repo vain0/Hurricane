@@ -14,7 +14,7 @@ namespace Hurricane.DragDrop
     {
         void IDropTarget.DragOver(IDropInfo dropInfo)
         {
-            if (((dropInfo.Data is PlayableBase || dropInfo.Data is IEnumerable<PlayableBase>) && dropInfo.TargetItem is IPlaylist && dropInfo.DragInfo.SourceCollection != MainViewModel.Instance.MusicManager.FavoritePlaylist.ViewSource))
+            if (((dropInfo.Data is PlayableBase || dropInfo.Data is IEnumerable<PlayableBase>) && dropInfo.TargetItem is IPlaylist))
             {
                 dropInfo.DropTargetAdorner = typeof (DropTargetHighlightAdorner);
                 dropInfo.Effects = DragDropEffects.Move;

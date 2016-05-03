@@ -339,7 +339,6 @@ namespace Hurricane.ViewModels
             {
                 return _downloadAllStreams ?? (_downloadAllStreams = new RelayCommand(async parameter =>
                 {
-                    if (MusicManager.FavoriteListIsSelected) return;
                     var lst = MusicManager.SelectedPlaylist.Tracks.OfType<StreamableBase>().Where(x => x.CanDownload).ToList();
                     if (!lst.Any()) return;
 

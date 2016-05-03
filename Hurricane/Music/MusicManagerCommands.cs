@@ -29,9 +29,6 @@ namespace Hurricane.Music
             {
                 return _jumptoplayingtrack ?? (_jumptoplayingtrack = new RelayCommand(parameter =>
                 {
-                    if (MusicManager.FavoritePlaylist == MusicManager.CurrentPlaylist)
-                        MusicManager.SelectedPlaylist = null;
-
                     MusicManager.SelectedPlaylist = MusicManager.CurrentPlaylist;
                     MusicManager.SelectedTrack = null;
                     MusicManager.SelectedTrack = MusicManager.CSCoreEngine.CurrentTrack;
@@ -159,18 +156,6 @@ namespace Hurricane.Music
                 {
                     MusicManager.Queue.ClearTracks();
                     MusicManager.OnPropertyChanged("Queue");
-                }));
-            }
-        }
-
-        private RelayCommand _openFavorites;
-        public RelayCommand OpenFavorites
-        {
-            get
-            {
-                return _openFavorites ?? (_openFavorites = new RelayCommand(parameter =>
-                {
-                    MusicManager.FavoriteListIsSelected = !MusicManager.FavoriteListIsSelected;
                 }));
             }
         }

@@ -187,8 +187,7 @@
     <system:String x:Key="LoadAlbumCoverFromInternet">Download missing cover art from internet</system:String>
     <system:String x:Key="CoverQuality">Cover art quality</system:String>
     <system:String x:Key="SaveAlbumCoverLocal">Save cover art local</system:String>
-    <system:String x:Key="PreferFavoriteTracks">Prefer favorite tracks in shuffle mode</system:String>
-    
+
     <system:String x:Key="Small">Small</system:String>
     <system:String x:Key="Medium">Medium</system:String>
     <system:String x:Key="Large">Large</system:String>
@@ -223,7 +222,6 @@
     <system:String x:Key="SaveError">An error occurred. Please check your inputs.</system:String>
     <system:String x:Key="SaveTagsError">An error occurred while saving the tags: "{0}"</system:String>
     <system:String x:Key="Change">Change</system:String>
-    <system:String x:Key="Favorites">Favorites</system:String>
     <system:String x:Key="TrimTrackname">Trim search text</system:String>
     <system:String x:Key="ShowArtistAndTitle">Show artist and title in list</system:String>
     <system:String x:Key="Crossfade">Crossfade</system:String>
@@ -233,7 +231,6 @@
     <system:String x:Key="Latency">Latency</system:String>
 
     <system:String x:Key="DefaultLatency">100 ms (Default)</system:String>
-    <system:String x:Key="PreferFavoriteDescription">In contrast to normal tracks, the chance that favorite tracks get chosen by shuffle is doubled.</system:String>
     <system:String x:Key="AccentColorString">Accent color</system:String>
     <system:String x:Key="TrimTracknameDescription">Unnecessary parts of the title like the year or quality will be removed which could improve the hit rate.</system:String>
 

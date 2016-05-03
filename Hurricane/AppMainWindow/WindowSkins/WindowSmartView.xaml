@@ -309,10 +309,6 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
-                    <ToggleButton Width="15"
-                                  Margin="0,0,5,0"
-                                  IsChecked="{Binding MusicManager.FavoriteListIsSelected}"
-                                  Style="{StaticResource FavoriteListToggleButton}" />
                     <ComboBox Grid.Column="1"
                               Height="27"
                               Margin="0,0,3,0"
@@ -320,22 +316,6 @@
                               DisplayMemberPath="Name"
                               ItemsSource="{Binding MusicManager.Playlists}"
                               SelectedItem="{Binding MusicManager.SelectedPlaylist}" />
-                    <TextBlock Grid.Column="1"
-                               Margin="8,0,0,0"
-                               VerticalAlignment="Center"
-                               Text="{DynamicResource Favorites}">
-                        <TextBlock.Style>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Visibility" Value="Collapsed" />
-                                <Setter Property="IsHitTestVisible" Value="False" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding MusicManager.FavoriteListIsSelected}" Value="True">
-                                        <Setter Property="Visibility" Value="Visible" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
                     <Menu Grid.Column="2"
                           HorizontalAlignment="Center"
                           VerticalAlignment="Center">

@@ -349,10 +349,6 @@
                 <ScrollViewer>
                     <StackPanel Margin="10" Orientation="Vertical">
                         <TextBlock Style="{StaticResource TextBlockHeader}" behaviors:TextBlockBehavior.UpperText="{DynamicResource Music}" />
-                        <CheckBox Margin="0,10,0,0"
-                                  Content="{DynamicResource PreferFavoriteTracks}"
-                                  IsChecked="{Binding Config.ShufflePreferFavoriteTracks}"
-                                  ToolTip="{DynamicResource PreferFavoriteDescription}" />
                         <TextBlock Margin="0,30,0,0"
                                    Style="{StaticResource TextBlockHeader}"
                                    Text="MAGIC ARROW" />

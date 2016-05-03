@@ -280,7 +280,6 @@
     <Compile Include="Music\Download\DownloadEntry.cs" />
     <Compile Include="Music\Download\DownloadManager.cs" />
     <Compile Include="Music\Download\DownloadProgress.cs" />
-    <Compile Include="Music\Playlist\FavoriteList.cs" />
     <Compile Include="Music\Data\IRepresentable.cs" />
     <Compile Include="Music\Data\SoundOutRepresenter.cs" />
     <Compile Include="Music\MusicEqualizer\EqualizerBand.cs" />

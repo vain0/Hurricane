@@ -56,8 +56,7 @@ namespace Hurricane.Music
             get { return _selectedplaylist; }
             set
             {
-                if (SetProperty(value, ref _selectedplaylist))
-                    OnPropertyChanged("FavoriteListIsSelected");
+                SetProperty(value, ref _selectedplaylist);
             }
         }
 
@@ -121,24 +120,20 @@ namespace Hurricane.Music
                 SetProperty(value, ref _downloadManager);
             }
         }
-
-        public FavoriteList FavoritePlaylist { get; private set; }
-
+        
         public bool FavoriteListIsSelected
         {
-            get { return SelectedPlaylist == FavoritePlaylist; }
+            get { return false; }
             set
             {
                 if (value)
                 {
-                    SelectedPlaylist = null;
-                    SelectedPlaylist = FavoritePlaylist;
+                    throw new Exception();
                 }
                 else
                 {
                     SelectedPlaylist = Playlists[0];
                 }
-
             }
         }
 
@@ -170,10 +165,7 @@ namespace Hurricane.Music
             CSCoreEngine.EqualizerSettings.Loaded();
             CSCoreEngine.Volume = currentState.Volume;
             DownloadManager = settings.Config.Downloader;
-
-            FavoritePlaylist = new FavoriteList();
-            FavoritePlaylist.Initalize(Playlists);
-
+            
             if (currentState.LastPlaylistIndex > -10)
             {
                 CurrentPlaylist = IndexToPlaylist(currentState.LastPlaylistIndex);
@@ -191,7 +183,6 @@ namespace Hurricane.Music
             {
                 lst.LoadList();
             }
-            FavoritePlaylist.LoadList();
             if (currentState.Queue != null) { Queue = currentState.Queue; Queue.Initialize(Playlists); }
 
             if (currentState.LastTrackIndex > -1 && currentState.LastTrackIndex < SelectedPlaylist.Tracks.Count)
@@ -375,8 +366,6 @@ namespace Hurricane.Music
         {
             switch (index)
             {
-                case -1:
-                    return FavoritePlaylist;
                 case -10:
                     return Playlists[0];
                 default:
@@ -388,7 +377,6 @@ namespace Hurricane.Music
         public int PlaylistToIndex(IPlaylist playlist)
         {
             if (playlist is NormalPlaylist) return Playlists.IndexOf((NormalPlaylist)playlist);
-            if (playlist is FavoriteList) return -1;
             return -10;
         }
 

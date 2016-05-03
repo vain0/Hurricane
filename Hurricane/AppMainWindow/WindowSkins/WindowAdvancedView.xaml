@@ -156,9 +156,6 @@
                             </MenuItem>
                         </MenuItem>
                         <MenuItem Background="Transparent"
-                                  Command="{Binding MusicManager.Commands.OpenFavorites}"
-                                  Header="{DynamicResource Favorites}" />
-                        <MenuItem Background="Transparent"
                                   Command="{Binding OpenOnlineSection}"
                                   Header="{DynamicResource Streams}" />
                         <MenuItem Background="Transparent"

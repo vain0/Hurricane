@@ -70,7 +70,6 @@
                                     <MenuItem Header="{DynamicResource RemoveAllTracks}"/>
                                 </MenuItem>
                             </MenuItem>
-                            <MenuItem Header="{DynamicResource Favorites}" Background="Transparent"/>
                             <MenuItem Header="{DynamicResource Streams}" Background="Transparent"/>
                         </Menu>
                         <Grid Grid.Row="1">

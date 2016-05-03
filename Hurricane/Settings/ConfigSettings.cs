@@ -63,7 +63,6 @@ namespace Hurricane.Settings
         public string Language { get; set; }
         public bool RememberTrackImportPlaylist { get; set; }
         public string PlaylistToImportTrack { get; set; }
-        public bool ShufflePreferFavoriteTracks { get; set; }
         public bool ShowArtistAndTitle { get; set; }
         public bool MinimizeToTray { get; set; }
         public bool ShowNotificationIfMinimizeToTray { get; set; }
