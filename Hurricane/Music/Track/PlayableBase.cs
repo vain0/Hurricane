@@ -59,7 +59,7 @@ namespace Hurricane.Music.Track
             _track = track;
         }
 
-        // TODO: Id を使えばいい
+        // TODO: We can use Id instead of this
         public long AuthenticationCode
         {
             get { return _track.AuthenticationCode; }
@@ -87,14 +87,29 @@ namespace Hurricane.Music.Track
                 DurationTimespan = duration;
             }
         }
-
-        // TODO: マッピングコードを書く
+        
         // ReSharper disable once InconsistentNaming
         [DefaultValue(0)]
-        public int kHz { get; set; }
+        public int kHz
+        {
+            get { return _track.kHz; }
+            set
+            {
+                _track.kHz = value;
+                OnPropertyChanged();
+            }
+        }
 
         // ReSharper disable once InconsistentNaming
-        public int kbps { get; set; }
+        public int kbps
+        {
+            get { return _track.kbps; }
+            set
+            {
+                _track.kbps = value;
+                OnPropertyChanged();
+            }
+        }
 
         public DateTime TimeAdded
         {
@@ -116,8 +131,17 @@ namespace Hurricane.Music.Track
             }
         }
 
+        // number of this track in album; useful for sorting
         [DefaultValue(0)]
-        public int TrackNumber { get; set; } // number of this track in album; useful for sorting
+        public int TrackNumber
+        {
+            get { return _track.TrackNumber; }
+            set
+            {
+                _track.TrackNumber = value;
+                OnPropertyChanged();
+            }
+        }
 
         [DefaultValue(0.0)]
         public double StartTime { get; set; }
