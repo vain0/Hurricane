@@ -13,7 +13,6 @@ namespace Hurricane.Music.Playlist
         string SearchText { get; set; }
         string Name { get; set; }
         bool CanEdit { get; }
-        bool ContainsDownloadableStreams { get; }
 
         PlayableBase GetRandomTrack(PlayableBase currentTrack);
 

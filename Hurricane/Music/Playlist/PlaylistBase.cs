@@ -171,10 +171,5 @@ namespace Hurricane.Music.Playlist
         {
             return Name;
         }
-
-        public bool ContainsDownloadableStreams
-        {
-            get { return Tracks.OfType<StreamableBase>().Any(x => x.CanDownload); }
-        }
     }
 }

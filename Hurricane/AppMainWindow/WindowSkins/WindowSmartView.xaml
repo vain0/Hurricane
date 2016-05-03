@@ -667,33 +667,6 @@
                                             </DockPanel.Resources>
                                             <ContentControl Content="{Binding}">
                                                 <ContentControl.Resources>
-                                                    <DataTemplate DataType="{x:Type track:StreamableBase}">
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <Viewbox Width="12"
-                                                                     Height="12"
-                                                                     VerticalAlignment="Center">
-                                                                <Path Data="{Binding ProviderVector}" Fill="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Path=Foreground}" />
-                                                            </Viewbox>
-                                                            <TextBlock Text=" :: " />
-                                                            <TextBlock Text="{Binding kHz}" />
-                                                            <TextBlock Text=" kHz" />
-                                                            <StackPanel Orientation="Horizontal">
-                                                                <StackPanel.Style>
-                                                                    <Style TargetType="StackPanel">
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Uploader, Converter={StaticResource FalseOnEmptyString}}" Value="false">
-                                                                                <Setter Property="Visibility" Value="Collapsed" />
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </StackPanel.Style>
-                                                                <TextBlock Text=" :: " />
-                                                                <TextBlock MaxWidth="120"
-                                                                           Text="{Binding Uploader}"
-                                                                           TextTrimming="CharacterEllipsis" />
-                                                            </StackPanel>
-                                                        </StackPanel>
-                                                    </DataTemplate>
                                                     <DataTemplate DataType="{x:Type track:LocalTrack}">
                                                         <StackPanel Orientation="Horizontal">
                                                             <TextBlock Text="{Binding Extension}" />

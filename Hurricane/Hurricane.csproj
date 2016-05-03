@@ -232,7 +232,6 @@
     <Compile Include="GUI\Controls\PlayPauseButton.xaml.cs">
       <DependentUpon>PlayPauseButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Converter\IsMusicApiConverter.cs" />
     <Compile Include="GUI\Extensions\ComboBoxItemTemplateChooser.cs" />
     <Compile Include="GUI\Behaviors\ControlBehavior.cs" />
     <Compile Include="GUI\Converter\CollapsedOnNullValue.cs" />
@@ -249,21 +248,11 @@
     <Compile Include="Music\Download\DownloadSettings.cs" />
     <Compile Include="Music\Download\ffmpeg.cs" />
     <Compile Include="Music\Download\GroovesharkApi.cs" />
-    <Compile Include="Music\Playlist\CueSharp.cs" />
-    <Compile Include="Music\Playlist\ImportCueSheet.cs" />
-    <Compile Include="Music\Playlist\ImportM3uPlaylist.cs" />
     <Compile Include="Music\Playlist\Playlists.cs" />
     <Compile Include="Music\AudioEngine\SoundOutManager.cs" />
     <Compile Include="Music\Proxy\HttpProxy.cs" />
     <Compile Include="Music\Proxy\ProxyEntry.cs" />
-    <Compile Include="Music\Track\LocalTrackFragment.cs" />
     <Compile Include="Music\AudioEngine\CutSource.cs" />
-    <Compile Include="Music\Track\CustomStream.cs" />
-    <Compile Include="Music\Track\WebApi\YouTubeApi\DataClasses\ContentSearchResult.cs" />
-    <Compile Include="Music\Track\WebApi\YouTubeApi\DataClasses\IVideoInfo.cs" />
-    <Compile Include="Music\Track\WebApi\YouTubeApi\DataClasses\PlaylistInfo\PlaylistInfo.cs" />
-    <Compile Include="Music\Track\WebApi\YouTubeApi\DataClasses\VideoInfo\GetVideoInfoResult.cs" />
-    <Compile Include="Music\Track\WebApi\YouTubeApi\DataClasses\SearchResult\SearchResult.cs" />
     <Compile Include="Settings\Converter\GroupConverter.cs" />
     <Compile Include="Settings\Converter\TransitionConverter.cs" />
     <Compile Include="Settings\PasswordEntry.cs" />
@@ -344,23 +333,13 @@
     <Compile Include="Music\Result.cs" />
     <Compile Include="Music\Track\IDownloadable.cs" />
     <Compile Include="Music\Track\IMusicInformation.cs" />
-    <Compile Include="Music\Track\WebApi\IMusicApi.cs" />
     <Compile Include="Music\Track\WebApi\IPlaylistResult.cs" />
     <Compile Include="Music\Track\LocalTrack.cs" />
     <Compile Include="Music\Track\PlayableBase.cs" />
     <Compile Include="Music\Track\WebApi\LoadingTracksEventArgs.cs" />
-    <Compile Include="Music\Track\WebApi\SoundCloudApi\SoundCloudApi.cs" />
-    <Compile Include="Music\Track\WebApi\SoundCloudApi\ApiResult.cs" />
-    <Compile Include="Music\Track\WebApi\SoundCloudApi\SoundCloudWebTrackResult.cs" />
-    <Compile Include="Music\Track\SoundCloudTrack.cs" />
-    <Compile Include="Music\Track\StreamableBase.cs" />
     <Compile Include="Music\Track\SoundSourceInfo.cs" />
     <Compile Include="Music\Track\WebApi\TrackSearcher.cs" />
     <Compile Include="Music\Track\WebApi\WebTrackResultBase.cs" />
-    <Compile Include="Music\Track\WebApi\YouTubeApi\SingleVideoSearchResult.cs" />
-    <Compile Include="Music\Track\WebApi\YouTubeApi\YouTubeApi.cs" />
-    <Compile Include="Music\Track\WebApi\YouTubeApi\YouTubeWebTrackResult.cs" />
-    <Compile Include="Music\Track\YouTubeTrack.cs" />
     <Compile Include="Music\AudioEngine\VolumeFading.cs" />
     <Compile Include="Notification\NotificationService.cs" />
     <Compile Include="Notification\Views\NotificationRightBottomWindow.xaml.cs">
@@ -473,9 +452,6 @@
     </Compile>
     <Compile Include="Views\ReportExceptionWindow.xaml.cs">
       <DependentUpon>ReportExceptionWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MetroDialogs\AddCustomStreamView.xaml.cs">
-      <DependentUpon>AddCustomStreamView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\EqualizerView.xaml.cs">
       <DependentUpon>EqualizerView.xaml</DependentUpon>
@@ -798,10 +774,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ReportExceptionWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MetroDialogs\AddCustomStreamView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
