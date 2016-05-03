@@ -221,7 +221,6 @@
     <Compile Include="Music\AudioEngine\SoundOutManager.cs" />
     <Compile Include="Music\Proxy\HttpProxy.cs" />
     <Compile Include="Music\Proxy\ProxyEntry.cs" />
-    <Compile Include="Music\Track\LocalTrackFragment.cs" />
     <Compile Include="Music\AudioEngine\CutSource.cs" />
     <Compile Include="Music\Track\CustomStream.cs" />
     <Compile Include="Settings\Converter\GroupConverter.cs" />

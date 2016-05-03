@@ -72,18 +72,7 @@ namespace Hurricane.Music.Playlist
                     // and checking it's duration first; deferred to track info reading code
                 }
 
-                var element = new LocalTrackFragment(offset, duration, track.Title)
-                {
-                    Path = Path.Combine(basePath, audioFile),
-                    Artist = track.Performer ?? cue.Performer,
-                    Album = track.Title ?? cue.Title,
-                    TrackNumber = track.TrackNumber,
-                    Genres = new List<Genre> { PlayableBase.StringToGenre(genre) },
-                    Year = year
-                };
-
-                playlist.AddTrack(element);
-
+                throw new NotImplementedException();
                 ++i;
             }
 

@@ -21,7 +21,6 @@ namespace Hurricane.Music.Track
 {
     [Serializable, XmlType(TypeName = "Playable"),
      XmlInclude(typeof (LocalTrack)),
-     XmlInclude(typeof (LocalTrackFragment)),
      XmlInclude(typeof (CustomStream))]
     public abstract class PlayableBase : PropertyChangedBase, IEquatable<PlayableBase>, IRepresentable,
         IMusicInformation
