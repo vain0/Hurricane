@@ -521,18 +521,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Languages\Hurricane.nl-nl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Languages\Hurricane.fi-fi.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Languages\Hurricane.de-de.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Resources\Styles\AdvancedTimelineSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -851,16 +839,7 @@
     <Resource Include="Resources\MediaIcons\ThumbButtons\play.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Languages\Icons\de.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Languages\Icons\us.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\GUI\updater.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Languages\Icons\fi.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ffmpeg.exe">
