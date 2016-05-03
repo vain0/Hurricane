@@ -6,7 +6,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Data;
-using System.Xml.Serialization;
 using Hurricane.Music.Data;
 using Hurricane.Music.Track;
 using Hurricane.Settings;
@@ -34,7 +33,6 @@ namespace Hurricane.Music.Playlist
         }
 
         private ICollectionView _viewsource;
-        [XmlIgnore]
         public ICollectionView ViewSource
         {
             get
@@ -48,7 +46,6 @@ namespace Hurricane.Music.Playlist
         }
 
         private string _searchtext;
-        [XmlIgnore]
         public string SearchText
         {
             get { return _searchtext; }
@@ -82,8 +79,7 @@ namespace Hurricane.Music.Playlist
         public abstract void Clear();
 
         #region Shuffle
-
-        [XmlIgnore]
+        
         public List<PlayableBase> ShuffleList { get; set; }
         
         protected void CreateShuffleList()

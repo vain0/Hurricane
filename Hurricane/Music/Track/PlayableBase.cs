@@ -5,7 +5,6 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
-using System.Xml.Serialization;
 using CSCore;
 using Hurricane.Music.AudioEngine;
 using Hurricane.Music.Data;
@@ -19,8 +18,6 @@ using Hurricane.ViewModels;
 
 namespace Hurricane.Music.Track
 {
-    [Serializable, XmlType(TypeName = "Playable"),
-     XmlInclude(typeof (LocalTrack))]
     public abstract class PlayableBase : PropertyChangedBase, IEquatable<PlayableBase>, IRepresentable,
         IMusicInformation
     {
@@ -79,15 +76,13 @@ namespace Hurricane.Music.Track
             get { return _isChecked; }
             set { SetProperty(value, ref _isChecked); }
         }
-        
-        [XmlIgnore]
+
         public bool IsOpened
         {
             get { return _isOpened; }
             set { SetProperty(value, ref _isOpened); }
         }
 
-        [XmlIgnore]
         public string QueueId
             //I know that the id should be an int, but it wouldn't make sense because what would be the id for non queued track? We would need a converter -> less performance -> string is wurf
         {
@@ -120,14 +115,12 @@ namespace Hurricane.Music.Track
         public abstract bool TrackExists { get; }
         public abstract TrackType TrackType { get; }
 
-        [XmlIgnore]
         public bool IsRemoving
         {
             get { return _isRemoving; }
             set { SetProperty(value, ref _isRemoving); }
         }
 
-        [XmlIgnore]
         public bool IsAdded
         {
             get { return _isAdded; }
@@ -182,7 +175,6 @@ namespace Hurricane.Music.Track
 
         public event EventHandler ImageLoadedComplete;
 
-        [XmlIgnore]
         public BitmapImage Image
         {
             get { return _image; }
@@ -193,7 +185,6 @@ namespace Hurricane.Music.Track
             }
         }
 
-        [XmlIgnore]
         public bool IsLoadingImage
         {
             get { return _isLoadingImage; }

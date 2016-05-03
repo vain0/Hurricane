@@ -4,13 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Threading;
-using System.Xml.Serialization;
 using Hurricane.Music.CustomEventArgs;
 using Hurricane.Music.Track;
 
 namespace Hurricane.Music.Playlist
 {
-    [Serializable, XmlType(TypeName = "Playlist")]
     public class NormalPlaylist : PlaylistBase
     {
         private string _name;
