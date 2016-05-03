@@ -113,7 +113,7 @@ namespace Hurricane.Music.Track
             {
                 using (var soundSource = await GetSoundSource())
                 {
-                    SetDuration(soundSource.GetLength());
+                    DurationTimespan = soundSource.GetLength();
                     kHz = soundSource.WaveFormat.SampleRate / 1000;
                     IsInfinityStreamSerializable = soundSource.Length == 0;
                 }

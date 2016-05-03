@@ -52,7 +52,7 @@ namespace Hurricane.Music.Track
             {
                 var duration = source.GetLength();
                 _duration = duration - Offset;
-                SetDuration(_duration);
+                DurationTimespan = _duration;
             }
 
             kHz = source.WaveFormat.SampleRate / 1000;

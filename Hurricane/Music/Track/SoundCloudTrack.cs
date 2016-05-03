@@ -50,7 +50,7 @@ namespace Hurricane.Music.Track
             SoundCloudID = result.id;
             Uploader = result.user.username;
             Downloadable = result.downloadable;
-            SetDuration(TimeSpan.FromSeconds(result.duration));
+            DurationTimespan = TimeSpan.FromSeconds(result.duration);
             return true;
         }
 

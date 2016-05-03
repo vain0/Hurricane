@@ -127,6 +127,10 @@ namespace Hurricane.Music.Track
             {
                 return TimeSpan.ParseExact(Duration, Duration.Split(':').Length == 2 ? @"mm\:ss" : @"hh\:mm\:ss", null);
             }
+            set
+            {
+                Duration = value.ToString(value.Hours == 0 ? @"mm\:ss" : @"hh\:mm\:ss");
+            }
         }
 
         public string DisplayText
@@ -277,11 +281,6 @@ namespace Hurricane.Music.Track
             if (handler != null) handler(this, EventArgs.Empty);
         }
 
-        protected void SetDuration(TimeSpan timeSpan)
-        {
-            Duration = timeSpan.ToString(timeSpan.Hours == 0 ? @"mm\:ss" : @"hh\:mm\:ss");
-        }
-
         protected IWaveSource CutWaveSource(IWaveSource source)
         {
             // ReSharper disable CompareOfFloatsByEqualityOperator
@@ -300,7 +299,7 @@ namespace Hurricane.Music.Track
             {
                 using (var soundSource = await GetSoundSource())
                 {
-                    SetDuration(soundSource.GetLength());
+                    DurationTimespan = soundSource.GetLength();
                     kHz = soundSource.WaveFormat.SampleRate/1000;
                 }
             }

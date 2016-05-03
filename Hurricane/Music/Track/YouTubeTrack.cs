@@ -54,7 +54,7 @@ namespace Hurricane.Music.Track
             using (var soundSource = await GetSoundSource())
             {
                 kHz = soundSource.WaveFormat.SampleRate / 1000;
-                SetDuration(soundSource.GetLength());
+                DurationTimespan = soundSource.GetLength();
             }
             return true;
         }
