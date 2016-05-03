@@ -118,12 +118,10 @@ namespace Hurricane.Music.Playlist
 
         public virtual void AddTrack(PlayableBase track)
         {
-            OnTrackListChanged();
         }
 
         public virtual void RemoveTrack(PlayableBase track)
         {
-            OnTrackListChanged();
         }
 
         public abstract string Name { get; set; }
@@ -152,12 +150,7 @@ namespace Hurricane.Music.Playlist
         }
 
         public abstract bool CanEdit { get; }
-
-        protected void OnTrackListChanged()
-        {
-            OnPropertyChanged("ContainsDownloadableStreams");
-        }
-
+        
         public override string ToString()
         {
             return Name;

@@ -29,11 +29,11 @@ namespace Hurricane.Settings
         {
             var playlistSettings = new PlaylistSettings();
 
-            var playlists = new ObservableCollection<NormalPlaylist>();
-            foreach (var playlist in Entity.Instance.playlists.ToList())
-            {
-                playlists.Add(new NormalPlaylist(playlist));
-            }
+            var playlists =
+                Entity.Instance.playlists
+                .ToList()   // to be strict
+                .Select(playlist => new NormalPlaylist(playlist))
+                .ToObservableCollection();
 
             playlistSettings.Playlists = playlists.IsEmpty() ? DefaultPlaylists() : playlists;
             return playlistSettings;
