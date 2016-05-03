@@ -138,13 +138,6 @@
                                       Header="{DynamicResource AddDirectories}"
                                       IsEnabled="{Binding MusicManager.SelectedPlaylist.CanEdit}" />
                             <Separator />
-                            <MenuItem Command="{Binding AddCustomStream}"
-                                      Header="{DynamicResource AddCustomStream}"
-                                      IsEnabled="{Binding MusicManager.SelectedPlaylist.CanEdit}" />
-                            <MenuItem Command="{Binding DownloadAllStreams}"
-                                      Header="{DynamicResource DownloadAllStreams}"
-                                      IsEnabled="{Binding MusicManager.SelectedPlaylist.ContainsDownloadableStreams}" />
-                            <Separator />
                             <MenuItem Command="{Binding ReloadTrackInformation}"
                                       Header="{DynamicResource ReloadTrackInfo}"
                                       IsEnabled="{Binding MusicManager.SelectedPlaylist.CanEdit}" />
@@ -155,9 +148,6 @@
                                 <MenuItem Command="{Binding ClearSelectedPlaylist}" Header="{DynamicResource RemoveAllTracks}" />
                             </MenuItem>
                         </MenuItem>
-                        <MenuItem Background="Transparent"
-                                  Command="{Binding OpenOnlineSection}"
-                                  Header="{DynamicResource Streams}" />
                         <MenuItem Background="Transparent"
                                   Command="{Binding OpenDownloadManager}"
                                   Header="{DynamicResource Downloads}">
@@ -325,91 +315,6 @@
                                                       Header="{DynamicResource Remove}"
                                                       InputGestureText="{DynamicResource Del}" />
                                         </ContextMenu>
-
-                                        <ContextMenu x:Key="StreamContextMenu" d:DataContext="{d:DesignInstance track:StreamableBase}">
-                                            <MenuItem Command="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                                                                       AncestorType={x:Type ListView}},
-                                                                        Path=DataContext.MusicManager.Commands.PlaySelectedTrack}"
-                                                      Header="{DynamicResource Play}"
-                                                      InputGestureText="Enter" />
-                                            <Separator />
-                                            <MenuItem Header="{DynamicResource AddTracks}" IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}, Path=DataContext.MusicManager.SelectedPlaylist.CanEdit}">
-                                                <MenuItem Command="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                                                                           AncestorType={x:Type ListView}},
-                                                                            Path=DataContext.AddFilesToPlaylist}"
-                                                          Header="{DynamicResource AddFiles}"
-                                                          InputGestureText="{DynamicResource Ins}" />
-                                                <MenuItem Command="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                                                                           AncestorType={x:Type ListView}},
-                                                                            Path=DataContext.AddFolderToPlaylist}"
-                                                          Header="{DynamicResource AddDirectories}"
-                                                          InputGestureText="{DynamicResource CtrlIns}" />
-                                            </MenuItem>
-                                            <Separator />
-                                            <MenuItem Header="{DynamicResource Queue}">
-                                                <MenuItem Command="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                                                                           AncestorType={x:Type ListView}},
-                                                                            Path=DataContext.MusicManager.Commands.AddTracksToQueue}"
-                                                          CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListView},
-                                                                                     Path=SelectedItems}"
-                                                          Header="{DynamicResource AddToQueue}"
-                                                          InputGestureText="Q" />
-                                                <MenuItem Command="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                                                                           AncestorType={x:Type ListView}},
-                                                                            Path=DataContext.MusicManager.Commands.RemoveFromQueue}"
-                                                          Header="{DynamicResource RemoveFromQueue}"
-                                                          InputGestureText="Alt+Q" />
-                                                <MenuItem Command="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                                                                           AncestorType={x:Type ListView}},
-                                                                            Path=DataContext.MusicManager.Commands.ClearQueue}"
-                                                          Header="{DynamicResource ClearQueue}"
-                                                          IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                                                                             AncestorType={x:Type ListView}},
-                                                                              Path=DataContext.MusicManager.Queue.HasTracks}" />
-                                                <Separator />
-                                                <MenuItem Command="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                                                                           AncestorType={x:Type ListView}},
-                                                                            Path=DataContext.OpenQueueManager}"
-                                                          Header="{DynamicResource QueueManager}"
-                                                          InputGestureText="{DynamicResource CtrlQ}" />
-                                            </MenuItem>
-                                            <Separator />
-                                            <MenuItem Command="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                                                                       AncestorType={x:Type ListView}},
-                                                                        Path=DataContext.OpenTrackInformation}"
-                                                      Header="{DynamicResource TrackInformation}"
-                                                      InputGestureText="F4" />
-                                            <MenuItem Command="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                                                                       AncestorType={x:Type ListView}},
-                                                                        Path=DataContext.MusicManager.Commands.DownloadTracks}"
-                                                      CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ListView},
-                                                                                 Path=SelectedItems}"
-                                                      Header="{DynamicResource Download}"
-                                                      IsEnabled="{Binding CanDownload}" />
-                                            <MenuItem Command="{Binding OpenLinkCommand}"
-                                                      Header="{DynamicResource OpenUrl}"
-                                                      InputGestureText="Alt+O" />
-                                            <MenuItem Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}, Path=DataContext.ConvertStreamToLocalTrack}" Header="{DynamicResource ConvertToLocalTrack}">
-                                                <MenuItem.Style>
-                                                    <Style BasedOn="{StaticResource MetroMenuItem}" TargetType="MenuItem">
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding CanDownload}" Value="False">
-                                                                <Setter Property="Visibility" Value="Collapsed" />
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </MenuItem.Style>
-                                            </MenuItem>
-                                            <Separator />
-                                            <MenuItem Command="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                                                                       AncestorType={x:Type ListView}},
-                                                                        Path=DataContext.RemoveSelectedTracks}"
-                                                      CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,
-                                                                                                                AncestorType={x:Type ListView}},
-                                                                                 Path=SelectedItems}"
-                                                      Header="{DynamicResource Remove}"
-                                                      InputGestureText="{DynamicResource Del}" />
-                                        </ContextMenu>
                                         <Style x:Key="ListTextBlockStyle"
                                                TargetType="TextBlock"
                                                d:DataContext="{d:DesignInstance track:PlayableBase}">
@@ -466,9 +371,6 @@
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding TrackType}" Value="File">
                                                 <Setter Property="ContextMenu" Value="{StaticResource FileContextMenu}" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding TrackType}" Value="Stream">
-                                                <Setter Property="ContextMenu" Value="{StaticResource StreamContextMenu}" />
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding IsRemoving}" Value="True">
                                                 <DataTrigger.EnterActions>
@@ -1245,18 +1147,6 @@
                                                             <Path.Style>
                                                                 <Style TargetType="Path">
                                                                     <Style.Triggers>
-                                                                        <DataTrigger Binding="{Binding ProviderName}" Value="SoundCloud">
-                                                                            <Setter Property="Fill" Value="#FFFF3300" />
-                                                                        </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding ProviderName}" Value="YouTube">
-                                                                            <Setter Property="Fill" Value="{StaticResource BlackBrush}" />
-                                                                        </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding ProviderName}" Value="Grooveshark">
-                                                                            <Setter Property="Fill" Value="{StaticResource BlackBrush}" />
-                                                                        </DataTrigger>
-                                                                        <DataTrigger Binding="{Binding ProviderName}" Value="Vkontakte">
-                                                                            <Setter Property="Fill" Value="{StaticResource BlackBrush}" />
-                                                                        </DataTrigger>
                                                                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem}, Path=IsSelected}" Value="True">
                                                                             <Setter Property="Fill" Value="White" />
                                                                         </DataTrigger>

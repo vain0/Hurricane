@@ -213,7 +213,6 @@
     <Compile Include="MagicArrow\WindowHider.cs" />
     <Compile Include="Music\Download\DownloadSettings.cs" />
     <Compile Include="Music\Download\ffmpeg.cs" />
-    <Compile Include="Music\Download\GroovesharkApi.cs" />
     <Compile Include="Music\Playlist\Playlists.cs" />
     <Compile Include="Music\AudioEngine\SoundOutManager.cs" />
     <Compile Include="Music\Proxy\HttpProxy.cs" />
