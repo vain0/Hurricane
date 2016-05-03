@@ -116,8 +116,6 @@ namespace Hurricane.Music.Playlist
 
         public override void AddTrack(PlayableBase track)
         {
-            base.AddTrack(track);
-
             Entity.Instance.playlist_items.Add(new playlist_items()
             {
                 PlaylistId = _playlist.Id,
@@ -140,7 +138,6 @@ namespace Hurricane.Music.Playlist
 
         public async override void RemoveTrack(PlayableBase track)
         {
-            base.RemoveTrack(track);
             ShuffleList.Remove(track);
             track.IsRemoving = true;
 

@@ -116,13 +116,8 @@ namespace Hurricane.Music.Playlist
 
         #endregion
 
-        public virtual void AddTrack(PlayableBase track)
-        {
-        }
-
-        public virtual void RemoveTrack(PlayableBase track)
-        {
-        }
+        public abstract void AddTrack(PlayableBase track);
+        public abstract void RemoveTrack(PlayableBase track);
 
         public abstract string Name { get; set; }
 
