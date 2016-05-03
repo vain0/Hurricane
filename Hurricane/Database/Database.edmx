@@ -33,18 +33,17 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="text" Nullable="false" />
-          <Property Name="Artist" Type="text" Nullable="false" />
-          <Property Name="Duration" Type="time" Precision="0" Nullable="false" />
-          <Property Name="Album" Type="text" Nullable="false" />
+          <Property Name="Title" Type="text" />
+          <Property Name="Artist" Type="text" />
+          <Property Name="Duration" Type="time" Precision="0" />
+          <Property Name="Album" Type="text" />
           <Property Name="TrackNumber" Type="int" Nullable="false" />
-          <Property Name="Year" Type="year" Nullable="false" />
+          <Property Name="Year" Type="year" />
           <Property Name="kHz" Type="int" Nullable="false" />
           <Property Name="kbps" Type="int" Nullable="false" />
           <Property Name="AuthenticationCode" Type="bigint" Nullable="false" />
           <Property Name="TimeAdded" Type="datetime" Precision="0" Nullable="false" />
-          <Property Name="LastTimePlayed" Type="datetime" Precision="0" Nullable="false" />
-          <Property Name="TrackType" Type="tinyint" Nullable="false" />
+          <Property Name="LastTimePlayed" Type="datetime" Precision="0" />
         </EntityType>
         <EntityContainer Name="HurricaneModelStoreContainer">
           <EntitySet Name="local_tracks" EntityType="Self.local_tracks" Schema="hurricane" store:Type="Tables" />
@@ -90,20 +89,19 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="Artist" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="Duration" Type="Time" Nullable="false" />
-          <Property Name="Album" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Artist" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Duration" Type="Time" />
+          <Property Name="Album" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="TrackNumber" Type="Int32" Nullable="false" />
-          <Property Name="Year" Type="Int16" Nullable="false" />
+          <Property Name="Year" Type="Int16" />
           <Property Name="kHz" Type="Int32" Nullable="false" />
           <Property Name="kbps" Type="Int32" Nullable="false" />
           <Property Name="AuthenticationCode" Type="Int64" Nullable="false" />
           <Property Name="TimeAdded" Type="DateTime" Nullable="false" />
-          <Property Name="LastTimePlayed" Type="DateTime" Nullable="false" />
-          <Property Name="TrackType" Type="SByte" Nullable="false" />
+          <Property Name="LastTimePlayed" Type="DateTime" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -138,7 +136,6 @@
           <EntitySetMapping Name="tracks">
             <EntityTypeMapping TypeName="HurricaneModel.track">
               <MappingFragment StoreEntitySet="tracks">
-                <ScalarProperty Name="TrackType" ColumnName="TrackType" />
                 <ScalarProperty Name="LastTimePlayed" ColumnName="LastTimePlayed" />
                 <ScalarProperty Name="TimeAdded" ColumnName="TimeAdded" />
                 <ScalarProperty Name="AuthenticationCode" ColumnName="AuthenticationCode" />

@@ -17,15 +17,14 @@ namespace Hurricane.Database
         public int Id { get; set; }
         public string Title { get; set; }
         public string Artist { get; set; }
-        public System.TimeSpan Duration { get; set; }
+        public Nullable<System.TimeSpan> Duration { get; set; }
         public string Album { get; set; }
         public int TrackNumber { get; set; }
-        public short Year { get; set; }
+        public Nullable<short> Year { get; set; }
         public int kHz { get; set; }
         public int kbps { get; set; }
         public long AuthenticationCode { get; set; }
         public System.DateTime TimeAdded { get; set; }
-        public System.DateTime LastTimePlayed { get; set; }
-        public sbyte TrackType { get; set; }
+        public Nullable<System.DateTime> LastTimePlayed { get; set; }
     }
 }
