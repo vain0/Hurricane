@@ -22,7 +22,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Styles/AdvancedTimelineSlider.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/RoundButtons.xaml" />
-                <ResourceDictionary Source="/Resources/Styles/FavoriteToggleButton.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/VectorMenuItem.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
@@ -155,9 +154,6 @@
                                 <MenuItem Command="{Binding ClearSelectedPlaylist}" Header="{DynamicResource RemoveAllTracks}" />
                             </MenuItem>
                         </MenuItem>
-                        <MenuItem Background="Transparent"
-                                  Command="{Binding MusicManager.Commands.OpenFavorites}"
-                                  Header="{DynamicResource Favorites}" />
                         <MenuItem Background="Transparent"
                                   Command="{Binding OpenOnlineSection}"
                                   Header="{DynamicResource Streams}" />
@@ -615,20 +611,7 @@
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>
                                         <GridViewColumn Width="80">
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate DataType="{x:Type track:PlayableBase}">
-                                                    <ToggleButton Width="16"
-                                                                  Height="16"
-                                                                  Margin="10,0,0,0"
-                                                                  HorizontalAlignment="Left"
-                                                                  Background="{StaticResource BlackBrush}"
-                                                                  Foreground="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem},
-                                                                                       Path=IsSelected,
-                                                                                       Converter={StaticResource TrueFalseValueConverter}}"
-                                                                  IsChecked="{Binding IsFavorite}"
-                                                                  Style="{StaticResource FavoriteToggleButton}" />
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
+                                            <!-- favorite -->
                                         </GridViewColumn>
                                         <GridViewColumn Width="80">
                                             <GridViewColumn.CellTemplate>
@@ -898,14 +881,6 @@
                                         </Style>
                                     </TextBlock.Style>
                                 </TextBlock>
-                                <ToggleButton Width="18"
-                                              Height="18"
-                                              Margin="0,10,0,10"
-                                              HorizontalAlignment="Left"
-                                              Background="{StaticResource NormalColorBrush}"
-                                              Foreground="#FFB4B4B4"
-                                              IsChecked="{Binding MusicManager.CSCoreEngine.CurrentTrack.IsFavorite}"
-                                              Style="{StaticResource FavoriteToggleButton}" />
                             </hurricaneControls:AnimatedStackPanel>
                             <ContentControl x:Name="AudioVisualisationContentControl"
                                             Grid.Row="1"

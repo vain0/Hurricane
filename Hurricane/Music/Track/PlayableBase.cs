@@ -83,29 +83,7 @@ namespace Hurricane.Music.Track
             get { return _isChecked; }
             set { SetProperty(value, ref _isChecked); }
         }
-
-        [DefaultValue(false)]
-        public bool IsFavorite
-        {
-            get { return _isFavorite; }
-            set
-            {
-                if (SetProperty(value, ref _isFavorite))
-                {
-                    if (MainViewModel.Instance.MusicManager == null) return;
-                    if (value)
-                        // I know that this is ugly as hell but it would be a pain to drop all events to the favorite list. If you got an idea to solve this problem, please tell me
-                    {
-                        MainViewModel.Instance.MusicManager.FavoritePlaylist.AddTrack(this);
-                    }
-                    else
-                    {
-                        MainViewModel.Instance.MusicManager.FavoritePlaylist.RemoveTrack(this);
-                    }
-                }
-            }
-        }
-
+        
         [XmlIgnore]
         public bool IsOpened
         {

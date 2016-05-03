@@ -44,7 +44,6 @@
           <Property Name="AuthenticationCode" Type="bigint" Nullable="false" />
           <Property Name="TimeAdded" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="LastTimePlayed" Type="datetime" Precision="0" Nullable="false" />
-          <Property Name="IsFavorite" Type="bool" Nullable="false" />
           <Property Name="TrackType" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityContainer Name="HurricaneModelStoreContainer">
@@ -102,7 +101,6 @@
           <Property Name="AuthenticationCode" Type="Int64" Nullable="false" />
           <Property Name="TimeAdded" Type="DateTime" Nullable="false" />
           <Property Name="LastTimePlayed" Type="DateTime" Nullable="false" />
-          <Property Name="IsFavorite" Type="Boolean" Nullable="false" />
           <Property Name="TrackType" Type="SByte" Nullable="false" />
         </EntityType>
       </Schema>
@@ -141,7 +139,6 @@
             <EntityTypeMapping TypeName="HurricaneModel.track">
               <MappingFragment StoreEntitySet="tracks">
                 <ScalarProperty Name="TrackType" ColumnName="TrackType" />
-                <ScalarProperty Name="IsFavorite" ColumnName="IsFavorite" />
                 <ScalarProperty Name="LastTimePlayed" ColumnName="LastTimePlayed" />
                 <ScalarProperty Name="TimeAdded" ColumnName="TimeAdded" />
                 <ScalarProperty Name="AuthenticationCode" ColumnName="AuthenticationCode" />

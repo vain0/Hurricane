@@ -378,25 +378,10 @@ namespace Hurricane.ViewModels
                                 newTrack.Title = track.Title;
                                 newTrack.Album = track.Album;
                                 newTrack.Genres = track.Genres;
-
-                                if (MusicManager.FavoriteListIsSelected)
-                                {
-                                    foreach (var normalPlaylist in MusicManager.Playlists)
-                                    {
-                                        if (normalPlaylist.Tracks.Contains(track))
-                                        {
-                                            normalPlaylist.Tracks[normalPlaylist.Tracks.IndexOf(track)] = newTrack;
-                                        }
-                                    }
-                                    track.IsFavorite = false; //To remove from the favorite list
-                                }
-                                else
-                                {
-                                    MusicManager.SelectedPlaylist.Tracks[
-                                        MusicManager.SelectedPlaylist.Tracks.IndexOf(track)] = newTrack;
-                                }
-
-                                newTrack.IsFavorite = track.IsFavorite;
+                                
+                                MusicManager.SelectedPlaylist.Tracks[
+                                    MusicManager.SelectedPlaylist.Tracks.IndexOf(track)] = newTrack;
+ 
                                 if (track.IsOpened)
                                     MusicManager.PlayTrack(newTrack, MusicManager.SelectedPlaylist);
 
@@ -428,7 +413,6 @@ namespace Hurricane.ViewModels
             {
                 return _downloadAllStreams ?? (_downloadAllStreams = new RelayCommand(async parameter =>
                 {
-                    if (MusicManager.FavoriteListIsSelected) return;
                     var lst = MusicManager.SelectedPlaylist.Tracks.OfType<StreamableBase>().Where(x => x.CanDownload).ToList();
                     if (!lst.Any()) return;
 

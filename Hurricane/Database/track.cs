@@ -26,7 +26,6 @@ namespace Hurricane.Database
         public long AuthenticationCode { get; set; }
         public System.DateTime TimeAdded { get; set; }
         public System.DateTime LastTimePlayed { get; set; }
-        public bool IsFavorite { get; set; }
         public sbyte TrackType { get; set; }
     }
 }

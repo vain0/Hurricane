@@ -322,7 +322,6 @@
     <Compile Include="Music\Download\DownloadProgress.cs" />
     <Compile Include="Music\Download\SoundCloudDownloader.cs" />
     <Compile Include="Music\Download\youtube-dl.cs" />
-    <Compile Include="Music\Playlist\FavoriteList.cs" />
     <Compile Include="Music\Data\IRepresentable.cs" />
     <Compile Include="Music\Data\SoundOutRepresenter.cs" />
     <Compile Include="Music\MusicEqualizer\EqualizerBand.cs" />
@@ -577,10 +576,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\CleanWindowStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Styles\FavoriteToggleButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

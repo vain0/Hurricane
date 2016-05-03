@@ -85,26 +85,15 @@ namespace Hurricane.Music.Playlist
 
         [XmlIgnore]
         public List<PlayableBase> ShuffleList { get; set; }
-
-        private bool _addedFavoriteTracksTwoTimes;
+        
         protected void CreateShuffleList()
         {
             ShuffleList = new List<PlayableBase>(Tracks);
-            if (HurricaneSettings.Instance.Config.ShufflePreferFavoriteTracks)
-            {
-                ShuffleList.AddRange(Tracks.Where(x => x.IsFavorite));
-                _addedFavoriteTracksTwoTimes = true;
-            }
-            else
-            {
-                _addedFavoriteTracksTwoTimes = false;
-            }
         }
 
         protected void RemoveFromShuffleList(PlayableBase track)
         {
             ShuffleList.Remove(track);
-            if (_addedFavoriteTracksTwoTimes) ShuffleList.Remove(track);
         }
 
         public PlayableBase GetRandomTrack(PlayableBase currentTrack)
