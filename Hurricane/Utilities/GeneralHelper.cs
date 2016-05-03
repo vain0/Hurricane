@@ -133,7 +133,10 @@ namespace Hurricane.Utilities
         {
             var stringBuilder = new StringBuilder();
             stringBuilder.Append(string.Concat(extensions.Select(x => (x.StartsWith("*.") ? null : (x.StartsWith(".") ? "*" : "*.")) + x + ";").ToArray()));
-            stringBuilder.Remove(stringBuilder.Length - 1, 1);
+            if (stringBuilder.Length >= 1)
+            {
+                stringBuilder.Remove(stringBuilder.Length - 1, 1);
+            }
             return stringBuilder.ToString();
         }
 
