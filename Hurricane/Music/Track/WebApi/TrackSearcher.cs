@@ -62,9 +62,7 @@ namespace Hurricane.Music.Track.WebApi
                 SetProperty(value, ref _playlistResult);
             }
         }
-
-        public List<IMusicApi> MusicApis { get; set; }
-
+        
         private RelayCommand _searchCommand;
         public RelayCommand SearchCommand
         {
@@ -104,35 +102,6 @@ namespace Hurricane.Music.Track.WebApi
 
         private async Task Search()
         {
-            foreach (var musicApi in MusicApis.Where(x => x.IsEnabled))
-            {
-                var result = await musicApi.CheckForSpecialUrl(SearchText);
-                if (result.Item1)
-                {
-                    SortResults(result.Item2);
-                    PlaylistResult = result.Item3;
-                    return;
-                }
-            }
-            var list = new List<WebTrackResultBase>();
-
-            var tasks = MusicApis.Where((t, i) => t.IsEnabled && (_manager.DownloadManager.SelectedService == 0 || _manager.DownloadManager.SelectedService == i + 1)).Select(t => t.Search(SearchText)).ToList();
-            foreach (var task in tasks)
-            {
-                list.AddRange(await task);
-            }
-
-            NothingFound = list.Count == 0;
-            SortResults(list);
-            var str = _manager.DownloadManager.Searches.FirstOrDefault(x => x.ToUpper() == SearchText.ToUpper());
-            if (!string.IsNullOrEmpty(str))
-            {
-                _manager.DownloadManager.Searches.Move(_manager.DownloadManager.Searches.IndexOf(str), 0);
-            }
-            else
-            {
-                _manager.DownloadManager.Searches.Insert(0, SearchText);
-            }
         }
 
         private RelayCommand _playSelectedTrack;
@@ -288,7 +257,6 @@ namespace Hurricane.Music.Track.WebApi
             _cancelWaiter = new AutoResetEvent(false);
             _manager = manager;
             _baseWindow = baseWindow;
-            MusicApis = new List<IMusicApi>();
         }
     }
 }

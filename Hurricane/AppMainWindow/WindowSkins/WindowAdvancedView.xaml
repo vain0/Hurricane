@@ -315,23 +315,6 @@
                                                       Header="{DynamicResource Remove}"
                                                       InputGestureText="{DynamicResource Del}" />
                                         </ContextMenu>
-                                        <Style x:Key="ListTextBlockStyle"
-                                               TargetType="TextBlock"
-                                               d:DataContext="{d:DesignInstance track:PlayableBase}">
-                                            <Setter Property="Foreground" Value="{StaticResource BlackBrush}" />
-                                            <Style.Triggers>
-                                                <MultiDataTrigger>
-                                                    <MultiDataTrigger.Conditions>
-                                                        <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}, Path=IsSelected}" Value="False" />
-                                                        <Condition Binding="{Binding IsOpened}" Value="True" />
-                                                    </MultiDataTrigger.Conditions>
-                                                    <Setter Property="Foreground" Value="{StaticResource NormalColorBrush}" />
-                                                </MultiDataTrigger>
-                                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}, Path=IsSelected}" Value="True">
-                                                    <Setter Property="Foreground" Value="{StaticResource AccentSelectedColorBrush}" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
                                         <Style TargetType="{x:Type GridViewColumnHeader}">
                                             <Setter Property="Visibility" Value="Collapsed" />
                                         </Style>
@@ -363,47 +346,6 @@
                                                 Modifiers="Control" />
                                     <KeyBinding Key="F4" Command="{Binding OpenTrackInformation}" />
                                 </ListView.InputBindings>
-                                <ListView.ItemContainerStyle>
-                                    <Style BasedOn="{StaticResource ItemContainerStyle}"
-                                           TargetType="ListViewItem"
-                                           d:DataContext="{d:DesignInstance track:PlayableBase}">
-                                        <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding TrackType}" Value="File">
-                                                <Setter Property="ContextMenu" Value="{StaticResource FileContextMenu}" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding IsRemoving}" Value="True">
-                                                <DataTrigger.EnterActions>
-                                                    <BeginStoryboard>
-                                                        <Storyboard>
-                                                            <DoubleAnimation Duration="0:0:0.5"
-                                                                             Storyboard.TargetProperty="Opacity"
-                                                                             To="0" />
-                                                        </Storyboard>
-                                                    </BeginStoryboard>
-                                                </DataTrigger.EnterActions>
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding IsAdded}" Value="True">
-                                                <DataTrigger.EnterActions>
-                                                    <BeginStoryboard>
-                                                        <Storyboard>
-                                                            <ThicknessAnimation Duration="0:0:0.5"
-                                                                                FillBehavior="Stop"
-                                                                                From="-40,0,40,0"
-                                                                                Storyboard.TargetProperty="Margin"
-                                                                                To="0" />
-                                                            <DoubleAnimation Duration="0:0:0.5"
-                                                                             FillBehavior="Stop"
-                                                                             From="0"
-                                                                             Storyboard.TargetProperty="Opacity"
-                                                                             To="1" />
-                                                        </Storyboard>
-                                                    </BeginStoryboard>
-                                                </DataTrigger.EnterActions>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </ListView.ItemContainerStyle>
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Width="27">
@@ -501,7 +443,6 @@
                                                 <DataTemplate DataType="{x:Type track:PlayableBase}">
                                                     <Grid Margin="10,0,0,0">
                                                         <TextBlock VerticalAlignment="Center"
-                                                                   Style="{StaticResource ListTextBlockStyle}"
                                                                    Text="{Binding DisplayText}"
                                                                    TextTrimming="CharacterEllipsis" />
                                                     </Grid>
@@ -529,7 +470,7 @@
                                                 <DataTemplate DataType="{x:Type track:PlayableBase}">
                                                     <TextBlock Margin="0,0,10,0" VerticalAlignment="Center">
                                                         <TextBlock.Style>
-                                                            <Style BasedOn="{StaticResource ListTextBlockStyle}" TargetType="TextBlock">
+                                                            <Style TargetType="TextBlock">
                                                                 <Setter Property="Text" Value="{Binding Duration}" />
                                                                 <Style.Triggers>
                                                                     <DataTrigger Binding="{Binding Duration}" Value="00:00">
@@ -806,29 +747,6 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <ComboBox Width="100"
-                                  Margin="0,0,5,0"
-                                  SelectedIndex="{Binding MusicManager.DownloadManager.SelectedService}">
-                            <ComboBox.Resources>
-                                <CollectionViewSource x:Key="ApiCollectionView" Source="{Binding MusicManager.TrackSearcher.MusicApis}" />
-                                <converter:IsMusicApiConverter x:Key="IsMusicApiConverter" />
-                            </ComboBox.Resources>
-                            <ComboBox.ItemContainerStyle>
-                                <Style BasedOn="{StaticResource MetroComboBoxItem}" TargetType="ComboBoxItem">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Converter={StaticResource IsMusicApiConverter}}" Value="true">
-                                            <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </ComboBox.ItemContainerStyle>
-                            <ComboBox.ItemsSource>
-                                <CompositeCollection>
-                                    <ComboBoxItem Content="{DynamicResource All}" />
-                                    <CollectionContainer Collection="{Binding Source={StaticResource ApiCollectionView}}" />
-                                </CompositeCollection>
-                            </ComboBox.ItemsSource>
-                        </ComboBox>
                         <ComboBox Grid.Column="1"
                                   IsEditable="True"
                                   ItemsSource="{Binding MusicManager.DownloadManager.Searches}"

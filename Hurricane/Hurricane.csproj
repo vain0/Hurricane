@@ -197,7 +197,6 @@
     <Compile Include="GUI\Controls\PlayPauseButton.xaml.cs">
       <DependentUpon>PlayPauseButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Converter\IsMusicApiConverter.cs" />
     <Compile Include="GUI\Extensions\ComboBoxItemTemplateChooser.cs" />
     <Compile Include="GUI\Behaviors\ControlBehavior.cs" />
     <Compile Include="GUI\Converter\CollapsedOnNullValue.cs" />
@@ -296,7 +295,6 @@
     <Compile Include="Music\Result.cs" />
     <Compile Include="Music\Track\IDownloadable.cs" />
     <Compile Include="Music\Track\IMusicInformation.cs" />
-    <Compile Include="Music\Track\WebApi\IMusicApi.cs" />
     <Compile Include="Music\Track\WebApi\IPlaylistResult.cs" />
     <Compile Include="Music\Track\LocalTrack.cs" />
     <Compile Include="Music\Track\PlayableBase.cs" />
