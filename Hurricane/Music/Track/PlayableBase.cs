@@ -66,7 +66,7 @@ namespace Hurricane.Music.Track
         // ReSharper disable once InconsistentNaming
         public int kbps { get; set; }
         public DateTime TimeAdded { get; set; }
-        public DateTime LastTimePlayed { get; set; }
+        public DateTime? LastTimePlayed { get; set; }
 
         [DefaultValue(0)]
         public int TrackNumber { get; set; } // number of this track in album; useful for sorting
