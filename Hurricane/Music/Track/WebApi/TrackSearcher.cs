@@ -307,12 +307,7 @@ namespace Hurricane.Music.Track.WebApi
             _cancelWaiter = new AutoResetEvent(false);
             _manager = manager;
             _baseWindow = baseWindow;
-            MusicApis = new List<IMusicApi>
-            {
-                new SoundCloudApi.SoundCloudApi(),
-                //new VkontakteApi.VkontakteApi(),
-                new YouTubeApi.YouTubeApi()
-            }; //new GroovesharkApi.GroovesharkApi()
+            MusicApis = new List<IMusicApi>();
         }
     }
 }

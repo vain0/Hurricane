@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using Hurricane.Music.MusicCover.APIs.Lastfm;
 using Hurricane.Music.Track;
-using Hurricane.Music.Track.WebApi.SoundCloudApi;
 using Hurricane.Settings;
 using Hurricane.Utilities;
 

@@ -813,12 +813,6 @@
                                                          Margin="10,0,0,0">
                                                     <ContentControl Margin="5,0,0,0" Content="{Binding}">
                                                         <ContentControl.Resources>
-                                                            <DataTemplate DataType="{x:Type track:SoundCloudTrack}">
-                                                                <Path Data="{Binding ProviderVector}" Fill="#FFFF3300" />
-                                                            </DataTemplate>
-                                                            <DataTemplate DataType="{x:Type track:YouTubeTrack}">
-                                                                <Path Data="{Binding ProviderVector}" Fill="{StaticResource BlackBrush}" />
-                                                            </DataTemplate>
                                                             <DataTemplate DataType="{x:Type track:CustomStream}">
                                                                 <Path Data="{Binding ProviderVector}" Fill="{StaticResource BlackBrush}" />
                                                             </DataTemplate>
