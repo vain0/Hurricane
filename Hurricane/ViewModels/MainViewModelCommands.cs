@@ -167,7 +167,7 @@ namespace Hurricane.ViewModels
                 {
                     string result = await _baseWindow.WindowDialogService.ShowInputDialog(Application.Current.Resources["NewPlaylist"].ToString(), Application.Current.Resources["NameOfPlaylist"].ToString(), Application.Current.Resources["Create"].ToString(), string.Empty, DialogMode.Single);
                     if (string.IsNullOrEmpty(result)) return;
-                    NormalPlaylist newplaylist = new NormalPlaylist() { Name = result };
+                    NormalPlaylist newplaylist = new NormalPlaylist(name: result);
                     MusicManager.Playlists.Add(newplaylist);
                     MusicManager.RegisterPlaylist(newplaylist);
                     MusicManager.SelectedPlaylist = newplaylist;

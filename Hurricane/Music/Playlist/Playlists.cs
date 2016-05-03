@@ -82,7 +82,7 @@ namespace Hurricane.Music.Playlist
                     }
                     else
                     {
-                        yield return new LocalTrack { Path = fi.FullName };
+                        yield return new LocalTrack(fi.FullName);
                     }
                 }
                 ++index;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading;
+using Hurricane.Database;
 using Hurricane.Settings.Themes;
 
 namespace Hurricane.Settings
@@ -89,6 +90,7 @@ namespace Hurricane.Settings
                 if (Playlists != null) Playlists.Save(Paths.BaseDirectory);
                 if (Config != null) Config.Save(Paths.BaseDirectory);
                 if (CurrentState != null) CurrentState.Save(Paths.BaseDirectory);
+                Entity.Instance.SaveChanges();
                 _isSaving = false;
             }) {IsBackground = false, Priority = ThreadPriority.Highest};
             saveThread.Start();

@@ -9,6 +9,7 @@ using System.Xml;
 using CSCore;
 using CSCore.Codecs;
 using CSCore.Codecs.MP3;
+using Hurricane.Database;
 using Hurricane.Music.MusicCover;
 using Hurricane.Settings;
 using Hurricane.Utilities;
@@ -18,13 +19,50 @@ namespace Hurricane.Music.Track
 {
     public class LocalTrack : PlayableBase
     {
-        public string Path { get; set; }
-        public string Extension { get; set; }
+        private local_tracks _localTrack;
 
+        public string Path
+        {
+            get { return _localTrack.Path; }
+            set
+            {
+                _localTrack.Path = value;
+                OnPropertyChanged();
+            }
+        }
+
+        // (e.g. "MP3")
+        public string Extension
+        {
+            get { return _localTrack.Extension; }
+            set
+            {
+                _localTrack.Extension = value;
+                OnPropertyChanged();
+            }
+        }
+        
         private FileInfo _trackinformation;
         public FileInfo TrackInformation
         {
             get { return _trackinformation ?? (_trackinformation = new FileInfo(Path)); }
+        }
+
+        public LocalTrack(string path)
+            : base()
+        {
+            _localTrack = Entity.Instance.local_tracks.Add(new local_tracks()
+            {
+                TrackId = Id,
+                Path = path,
+                Extension = System.IO.Path.GetExtension(path).ToUpper().Replace(".", string.Empty)
+            });
+        }
+
+        public LocalTrack(local_tracks localTrack)
+            : base(Entity.Instance.tracks.Find(localTrack.TrackId))
+        {
+            _localTrack = localTrack;
         }
 
         #region Information loading

@@ -152,7 +152,7 @@ namespace Hurricane.Music.Track.WebApi
                             IsLoading = false;
                             return;
                         }
-                        var newPlaylist = new NormalPlaylist() { Name = result };
+                        var newPlaylist = new NormalPlaylist(name: result);
                         _manager.Playlists.Add(newPlaylist);
                         _manager.RegisterPlaylist(newPlaylist);
                         playlist = newPlaylist;
@@ -200,7 +200,7 @@ namespace Hurricane.Music.Track.WebApi
                     if (PlaylistResult == null) return;
                     string result = await _baseWindow.WindowDialogService.ShowInputDialog(Application.Current.Resources["NewPlaylist"].ToString(), Application.Current.Resources["NameOfPlaylist"].ToString(), Application.Current.Resources["Create"].ToString(), PlaylistResult.Title, DialogMode.Single);
                     if (string.IsNullOrEmpty(result)) return;
-                    var playlist = new NormalPlaylist() { Name = result };
+                    var playlist = new NormalPlaylist(name: result);
                     _manager.Playlists.Add(playlist);
                     _manager.RegisterPlaylist(playlist);
 

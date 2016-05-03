@@ -60,14 +60,12 @@ namespace Hurricane.Notification
 
         public void Test(NotificationType type)
         {
-            PlayableBase trackToUse = _lasttrack ?? new LocalTrack
+            PlayableBase trackToUse = _lasttrack ?? new LocalTrack(Assembly.GetExecutingAssembly().Location)
             {
                 Artist = "Alkaline",
                 Title = "Sample Track",
                 Duration = "03:26",
-                kHz = 44,
-                Path = Assembly.GetExecutingAssembly().Location,
-                Extension = "MP3"
+                kHz = 44
             };
             ShowNotification(trackToUse, type);
         }

@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using CSCore;
+using Hurricane.Database;
 using Hurricane.Music.AudioEngine;
 using Hurricane.Music.Data;
 using Hurricane.Music.MusicCover;
@@ -21,8 +22,8 @@ namespace Hurricane.Music.Track
     public abstract class PlayableBase : PropertyChangedBase, IEquatable<PlayableBase>, IRepresentable,
         IMusicInformation
     {
-        private string _artist;
-
+        private track _track;
+        
         private CancellationTokenSource _disposeImageCancellationToken;
 
         private BitmapImage _image;
@@ -40,26 +41,80 @@ namespace Hurricane.Music.Track
         private bool _isRemoving;
 
         private string _queueId;
-
-        private string _title;
-
+        
         protected PlayableBase()
         {
-            AuthenticationCode = DateTime.Now.Ticks;
             IsChecked = true;
+
+            _track = Entity.Instance.tracks.Add(new track()
+            {
+                AuthenticationCode = DateTime.Now.Ticks,
+                TimeAdded = DateTime.Now
+            });
+            Entity.Instance.SaveChanges();
         }
 
-        public long AuthenticationCode { get; set; }
+        protected PlayableBase(track track)
+        {
+            _track = track;
+        }
 
-        public string Duration { get; set; }
+        // TODO: Id を使えばいい
+        public long AuthenticationCode
+        {
+            get { return _track.AuthenticationCode; }
+            private set
+            {
+                _track.AuthenticationCode = value;
+            }
+        }
+
+        public int Id
+        {
+            get { return _track.Id; }
+        }
+
+        public string Duration
+        {
+            get
+            {
+                return DurationTimespan.ToString(DurationTimespan.Hours == 0 ? @"mm\:ss" : @"hh\:mm\:ss");
+            }
+            set
+            {
+                var duration = TimeSpan.ParseExact(value, value.Split(':').Length == 2 ? @"mm\:ss" : @"hh\:mm\:ss", null);
+                if (duration == null) throw new ArgumentException();
+                DurationTimespan = duration;
+            }
+        }
+
+        // TODO: マッピングコードを書く
         // ReSharper disable once InconsistentNaming
         [DefaultValue(0)]
         public int kHz { get; set; }
 
         // ReSharper disable once InconsistentNaming
         public int kbps { get; set; }
-        public DateTime TimeAdded { get; set; }
-        public DateTime? LastTimePlayed { get; set; }
+
+        public DateTime TimeAdded
+        {
+            get { return _track.TimeAdded; }
+            set
+            {
+                _track.TimeAdded = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public DateTime? LastTimePlayed
+        {
+            get { return _track.LastTimePlayed; }
+            set
+            {
+                _track.LastTimePlayed = value;
+                OnPropertyChanged();
+            }
+        }
 
         [DefaultValue(0)]
         public int TrackNumber { get; set; } // number of this track in album; useful for sorting
@@ -92,13 +147,11 @@ namespace Hurricane.Music.Track
 
         public TimeSpan DurationTimespan
         {
-            get
-            {
-                return TimeSpan.ParseExact(Duration, Duration.Split(':').Length == 2 ? @"mm\:ss" : @"hh\:mm\:ss", null);
-            }
+            get { return _track.Duration ?? new TimeSpan(); }
             set
             {
-                Duration = value.ToString(value.Hours == 0 ? @"mm\:ss" : @"hh\:mm\:ss");
+                _track.Duration = value;
+                OnPropertyChanged();
             }
         }
 
@@ -128,16 +181,35 @@ namespace Hurricane.Music.Track
         }
 
         public abstract bool Equals(PlayableBase other);
-        public string Album { get; set; }
-        public uint Year { get; set; }
+
+        public string Album
+        {
+            get { return _track.Album; }
+            set
+            {
+                _track.Album = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public uint Year
+        {
+            get { return (uint)_track.Year; }
+            set
+            {
+                _track.Year = (short)value;
+                OnPropertyChanged();
+            }
+        }
+
         public List<Genre> Genres { get; set; }
 
         public string Title
         {
-            get { return _title; }
+            get { return _track.Title; }
             set
             {
-                _title = value;
+                _track.Title = value;
                 OnPropertyChanged("DisplayText");
                 OnPropertyChanged();
             }
@@ -145,10 +217,10 @@ namespace Hurricane.Music.Track
 
         public string Artist
         {
-            get { return _artist; }
+            get { return _track.Artist; }
             set
             {
-                _artist = value;
+                _track.Artist = value;
                 OnPropertyChanged("DisplayText");
                 OnPropertyChanged();
             }

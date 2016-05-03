@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -182,6 +183,21 @@ namespace Hurricane.Utilities
         public static string ROT13(string input)
         {
             return !string.IsNullOrEmpty(input) ? new string(input.ToCharArray().Select(s => (char)((s >= 97 && s <= 122) ? ((s + 13 > 122) ? s - 13 : s + 13) : (s >= 65 && s <= 90 ? (s + 13 > 90 ? s - 13 : s + 13) : s))).ToArray()) : input;
+        }
+        
+        public static bool IsEmpty<T>(this IEnumerable<T> self)
+        {
+            return self.All(_ => false);
+        }
+
+        public static ObservableCollection<T> ToObservableCollection<T>(this IEnumerable<T> self)
+        {
+            var coll = new ObservableCollection<T>();
+            foreach (var elem in self)
+            {
+                coll.Add(elem);
+            }
+            return coll;
         }
     }
 }

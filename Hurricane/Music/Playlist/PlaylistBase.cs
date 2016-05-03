@@ -21,16 +21,11 @@ namespace Hurricane.Music.Playlist
 
         protected PlaylistBase()
         {
-            _tracks = new ObservableCollection<PlayableBase>();
             _random = new Random();
         }
 
         // ReSharper disable once InconsistentNaming
-        protected ObservableCollection<PlayableBase> _tracks;
-        public ObservableCollection<PlayableBase> Tracks
-        {
-            get { return _tracks; }
-        }
+        public abstract ObservableCollection<PlayableBase> Tracks { get; }
 
         private ICollectionView _viewsource;
         public ICollectionView ViewSource

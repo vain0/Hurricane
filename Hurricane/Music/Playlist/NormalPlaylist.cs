@@ -1,26 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using Hurricane.Database;
 using Hurricane.Music.CustomEventArgs;
 using Hurricane.Music.Track;
+using Hurricane.Utilities;
 
 namespace Hurricane.Music.Playlist
 {
     public class NormalPlaylist : PlaylistBase
     {
-        private string _name;
+        private playlist _playlist;
+        private ObservableCollection<PlayableBase> _tracks;
+
         public override string Name
         {
-            get { return _name; }
+            get { return _playlist.Name; }
             set
             {
-                SetProperty(value, ref _name);
+                _playlist.Name = value;
+                OnPropertyChanged();
             }
         }
 
+        public override ObservableCollection<PlayableBase> Tracks
+        {
+            get
+            {
+                return _tracks;
+            }
+        }
+
+        public NormalPlaylist(string name)
+            : base()
+        {
+            _playlist = Entity.Instance.playlists.Add(new playlist() { Name = name });
+            Entity.Instance.SaveChanges();
+        }
+
+        public NormalPlaylist(playlist playlist)
+            : base()
+        {
+            _playlist = playlist;
+
+            _tracks =
+                Entity.Instance.TrackList(_playlist.Id)
+                .ToList()   // be strict
+                .Select(track =>
+                {
+                    var localTrack = Entity.Instance.local_tracks.Find(track.Id);
+                    return (PlayableBase)new LocalTrack(localTrack);
+                })
+                .ToObservableCollection();
+        }
+        
         public async Task AddFiles(IEnumerable<PlayableBase> tracks)
         {
             foreach (var track in tracks)
@@ -45,9 +82,8 @@ namespace Hurricane.Music.Playlist
                 if (fi.Exists)
                 {
                     if (progresschanged != null) progresschanged(this, new TrackImportProgressChangedEventArgs(index, count, fi.Name));
-                    var t = new LocalTrack() { Path = fi.FullName };
+                    var t = new LocalTrack(fi.FullName);
                     if (!await t.LoadInformation()) continue;
-                    t.TimeAdded = DateTime.Now;
                     t.IsChecked = false;
                     AddTrack(t);
                 }
@@ -81,7 +117,14 @@ namespace Hurricane.Music.Playlist
         public override void AddTrack(PlayableBase track)
         {
             base.AddTrack(track);
+
+            Entity.Instance.playlist_items.Add(new playlist_items()
+            {
+                PlaylistId = _playlist.Id,
+                TrackId = track.Id
+            });
             Tracks.Add(track);
+
             if (ShuffleList != null)
                 ShuffleList.Add(track);
 
@@ -102,6 +145,16 @@ namespace Hurricane.Music.Playlist
             track.IsRemoving = true;
 
             await Task.Delay(500);
+
+            var playlist_item =
+                Entity.Instance.playlist_items
+                .Where(item => item.PlaylistId == _playlist.Id && item.TrackId == track.Id)
+                .FirstOrDefault();
+            if (playlist_item != null)
+            {
+                Entity.Instance.playlist_items.Remove(playlist_item);
+            }
+
             if (!track.TrackExists)
             {
                 for (int i = 0; i < Tracks.Count; i++)
@@ -114,6 +167,7 @@ namespace Hurricane.Music.Playlist
                 }
             }
             else { Tracks.Remove(track); }
+            
             track.IsRemoving = false; //The track could be also in another playlist
         }
 

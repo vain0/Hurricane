@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
+using Hurricane.Database;
 using Hurricane.Music.Playlist;
+using Hurricane.Utilities;
 
 namespace Hurricane.Settings
 {
@@ -8,9 +11,14 @@ namespace Hurricane.Settings
     {
         public ObservableCollection<NormalPlaylist> Playlists { get; set; }
 
+        private static ObservableCollection<NormalPlaylist> DefaultPlaylists()
+        {
+            return new ObservableCollection<NormalPlaylist> { new NormalPlaylist(name: "Default") };
+        }
+
         public override void SetStandardValues()
         {
-            Playlists = new ObservableCollection<NormalPlaylist> { new NormalPlaylist() { Name = "Default" } };
+            Playlists = DefaultPlaylists();
         }
 
         public override void Save(string programPath)
@@ -20,7 +28,14 @@ namespace Hurricane.Settings
         public static PlaylistSettings Load(string programpath)
         {
             var playlistSettings = new PlaylistSettings();
-            playlistSettings.SetStandardValues();
+
+            var playlists = new ObservableCollection<NormalPlaylist>();
+            foreach (var playlist in Entity.Instance.playlists.ToList())
+            {
+                playlists.Add(new NormalPlaylist(playlist));
+            }
+
+            playlistSettings.Playlists = playlists.IsEmpty() ? DefaultPlaylists() : playlists;
             return playlistSettings;
         }
     }
