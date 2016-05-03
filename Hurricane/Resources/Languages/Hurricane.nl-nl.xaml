@@ -37,7 +37,6 @@
     <system:String x:Key="Playlist">Afspeellijst</system:String>
     <system:String x:Key="Presets">Sjablonen</system:String>
     <system:String x:Key="Settings">Instellingen</system:String>
-    <system:String x:Key="TagEditor">Tag Editer</system:String>
     <system:String x:Key="Thumbnail">Miniatuur</system:String>
     <system:String x:Key="Never">Nooit</system:String>
     <system:String x:Key="IncludeSubfolder">Inclusief submappen</system:String>

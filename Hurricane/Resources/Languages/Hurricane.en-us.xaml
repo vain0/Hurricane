@@ -222,7 +222,6 @@
     <system:String x:Key="Edit">Edit</system:String>
     <system:String x:Key="SaveError">An error occurred. Please check your inputs.</system:String>
     <system:String x:Key="SaveTagsError">An error occurred while saving the tags: "{0}"</system:String>
-    <system:String x:Key="TagEditor">Tag editor</system:String>
     <system:String x:Key="Change">Change</system:String>
     <system:String x:Key="Favorites">Favorites</system:String>
     <system:String x:Key="TrimTrackname">Trim search text</system:String>
@@ -339,7 +338,6 @@
     <system:String x:Key="RemoveTrackFromQueueDescription">Remove selected track from queue</system:String>
     <system:String x:Key="OpenQueueManagerDescription">Open queue manager</system:String>
     <system:String x:Key="OpenTrackInformationDescription">Open track information</system:String>
-    <system:String x:Key="OpenTagEditorDescription">Open tag editor</system:String>
     <system:String x:Key="PlaySelectedTrackDescription">Play selected track</system:String>
     <system:String x:Key="OpenTrackSourceDescription">Open the source (url or path) of the track</system:String>
     <system:String x:Key="ImportTracks">Import Tracks</system:String>

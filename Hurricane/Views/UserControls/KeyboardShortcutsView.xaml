@@ -156,7 +156,6 @@
                 <StackPanel Orientation="Horizontal">
                     <Label Style="{StaticResource KeyLabel}" Content="F3" HorizontalAlignment="Left" Width="50"/>
                 </StackPanel>
-                <TextBlock Grid.Column="1" Text="{DynamicResource OpenTagEditorDescription}" VerticalAlignment="Center"/>
             </Grid>
             <Grid Margin="0,10,0,0">
                 <Grid.ColumnDefinitions>

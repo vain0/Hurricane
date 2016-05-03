@@ -222,7 +222,6 @@
     <system:String x:Key="Edit">Bearbeiten</system:String>
     <system:String x:Key="SaveError">Es ist ein Fehler aufgetreten. Bitte überprüfen Sie ihre Eingaben.</system:String>
     <system:String x:Key="SaveTagsError">Es ist ein Fehler beim Speichern der Tags aufgetreten: "{0}"</system:String>
-    <system:String x:Key="TagEditor">Tag Editor</system:String>
     <system:String x:Key="Change">Ändern</system:String>
     <system:String x:Key="Favorites">Favoriten</system:String>
     <system:String x:Key="TrimTrackname">Suchtext verbessern</system:String>
@@ -339,7 +338,6 @@
     <system:String x:Key="RemoveTrackFromQueueDescription">Ausgewählten Track von der Warteschlange entfernen</system:String>
     <system:String x:Key="OpenQueueManagerDescription">Warteschlangen Manager öffnen</system:String>
     <system:String x:Key="OpenTrackInformationDescription">Trackinformationen anzeigen</system:String>
-    <system:String x:Key="OpenTagEditorDescription">Tag Editor öffnen</system:String>
     <system:String x:Key="PlaySelectedTrackDescription">Ausgewählten Track abspielen</system:String>
     <system:String x:Key="OpenTrackSourceDescription">Quelle des ausgewählten Tracks (Url oder Pfad) öffnen</system:String>
     <system:String x:Key="ImportTracks">Importiere Tracks</system:String>

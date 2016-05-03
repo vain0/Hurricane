@@ -316,10 +316,6 @@
                                                       Header="{DynamicResource TrackInformation}"
                                                       InputGestureText="F4"
                                                       IsEnabled="{Binding MusicManager.SelectedTrack.TrackExists}" />
-                                            <MenuItem Command="{Binding OpenTagEditor}"
-                                                      Header="{DynamicResource TagEditor}"
-                                                      InputGestureText="F3"
-                                                      IsEnabled="{Binding MusicManager.SelectedTrack.TrackExists}" />
                                             <MenuItem Command="{Binding MusicManager.Commands.OpenTrackLocation}"
                                                       Header="{DynamicResource FileLocation}"
                                                       InputGestureText="Alt+O"
@@ -464,7 +460,6 @@
                                                 Command="{Binding AddFolderToPlaylist}"
                                                 Modifiers="Control" />
                                     <KeyBinding Key="F4" Command="{Binding OpenTrackInformation}" />
-                                    <KeyBinding Key="F3" Command="{Binding OpenTagEditor}" />
                                 </ListView.InputBindings>
                                 <ListView.ItemContainerStyle>
                                     <Style BasedOn="{StaticResource ItemContainerStyle}"

@@ -258,21 +258,7 @@ namespace Hurricane.ViewModels
                 }));
             }
         }
-
-        private RelayCommand _opentageditor;
-        public RelayCommand OpenTagEditor
-        {
-            get
-            {
-                return _opentageditor ?? (_opentageditor = new RelayCommand(parameter =>
-                {
-                    var localTrack = MusicManager.SelectedTrack as LocalTrack;
-                    if (localTrack == null || !localTrack.TrackExists) return;
-                    _baseWindow.WindowDialogService.ShowDialog(new TagEditorWindow(localTrack));
-                }));
-            }
-        }
-
+        
         private RelayCommand _openupdater;
         public RelayCommand OpenUpdater
         {

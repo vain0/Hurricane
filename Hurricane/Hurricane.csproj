@@ -391,12 +391,8 @@
     <Compile Include="ViewModels\MainViewModelCommands.cs" />
     <Compile Include="ViewModels\QueueManagerViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\TagEditorViewModel.cs" />
     <Compile Include="Views\DownloadTrackWindow.xaml.cs">
       <DependentUpon>DownloadTrackWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TagEditorWindow.xaml.cs">
-      <DependentUpon>TagEditorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Test\PositionTestWindow.xaml.cs">
       <DependentUpon>PositionTestWindow.xaml</DependentUpon>
@@ -678,10 +674,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DownloadTrackWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TagEditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

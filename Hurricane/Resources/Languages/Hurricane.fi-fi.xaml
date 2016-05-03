@@ -203,7 +203,6 @@
     <system:String x:Key="Edit">muokata</system:String>
     <system:String x:Key="SaveError">Valitettavasti virhe. Tarkista kirjoitetut.</system:String>
     <system:String x:Key="SaveTagsError">Valitettavasti tapahtui virhe säästää päivä: "{0}"</system:String>
-    <system:String x:Key="TagEditor">Tag-editor</system:String>
     <system:String x:Key="Change">Muutos</system:String>
     <system:String x:Key="Favorites">suosikit</system:String>
     <system:String x:Key="TrimTrackname">haku-teksti parantaa</system:String>
