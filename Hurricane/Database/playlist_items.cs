@@ -16,6 +16,7 @@ namespace Hurricane.Database
     {
         public int Id { get; set; }
         public int PlaylistId { get; set; }
+        public int Index { get; set; }
         public int TrackId { get; set; }
     }
 }
