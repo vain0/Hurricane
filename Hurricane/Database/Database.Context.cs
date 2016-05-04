@@ -26,8 +26,8 @@ namespace Hurricane.Database
         }
     
         public DbSet<local_tracks> local_tracks { get; set; }
-        public DbSet<playlist_items> playlist_items { get; set; }
         public DbSet<playlist> playlists { get; set; }
         public DbSet<track> tracks { get; set; }
+        public DbSet<playlist_items> playlist_items { get; set; }
     }
 }

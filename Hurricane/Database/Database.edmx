@@ -19,6 +19,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PlaylistId" Type="int" Nullable="false" />
+          <Property Name="Index" Type="int" Nullable="false" />
           <Property Name="TrackId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="playlists">
@@ -57,9 +58,9 @@
       <Schema Namespace="HurricaneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="HurricaneEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="local_tracks" EntityType="HurricaneModel.local_tracks" />
-          <EntitySet Name="playlist_items" EntityType="HurricaneModel.playlist_items" />
           <EntitySet Name="playlists" EntityType="HurricaneModel.playlist" />
           <EntitySet Name="tracks" EntityType="HurricaneModel.track" />
+          <EntitySet Name="playlist_items" EntityType="HurricaneModel.playlist_items" />
         </EntityContainer>
         <EntityType Name="local_tracks">
           <Key>
@@ -68,14 +69,6 @@
           <Property Name="TrackId" Type="Int32" Nullable="false" />
           <Property Name="Path" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="Extension" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="playlist_items">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PlaylistId" Type="Int32" Nullable="false" />
-          <Property Name="TrackId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="playlist">
           <Key>
@@ -101,6 +94,15 @@
           <Property Name="TimeAdded" Type="DateTime" Nullable="false" />
           <Property Name="LastTimePlayed" Type="DateTime" />
         </EntityType>
+        <EntityType Name="playlist_items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlaylistId" Type="Int32" Nullable="false" />
+          <Property Name="Index" Type="Int32" Nullable="false" />
+          <Property Name="TrackId" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -113,15 +115,6 @@
                 <ScalarProperty Name="Extension" ColumnName="Extension" />
                 <ScalarProperty Name="Path" ColumnName="Path" />
                 <ScalarProperty Name="TrackId" ColumnName="TrackId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="playlist_items">
-            <EntityTypeMapping TypeName="HurricaneModel.playlist_items">
-              <MappingFragment StoreEntitySet="playlist_items">
-                <ScalarProperty Name="TrackId" ColumnName="TrackId" />
-                <ScalarProperty Name="PlaylistId" ColumnName="PlaylistId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -147,6 +140,16 @@
                 <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="Artist" ColumnName="Artist" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="playlist_items">
+            <EntityTypeMapping TypeName="HurricaneModel.playlist_items">
+              <MappingFragment StoreEntitySet="playlist_items">
+                <ScalarProperty Name="TrackId" ColumnName="TrackId" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="PlaylistId" ColumnName="PlaylistId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
