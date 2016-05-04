@@ -46,7 +46,7 @@ namespace Hurricane.Music.Playlist
             : base()
         {
             _playlist = playlist;
-
+            
             _tracks =
                 Entity.Instance.TrackList(_playlist.Id)
                 .ToList()   // be strict
@@ -119,6 +119,7 @@ namespace Hurricane.Music.Playlist
             Entity.Instance.playlist_items.Add(new playlist_items()
             {
                 PlaylistId = _playlist.Id,
+                Index = Tracks.Count,
                 TrackId = track.Id
             });
             Tracks.Add(track);
@@ -143,6 +144,7 @@ namespace Hurricane.Music.Playlist
 
             await Task.Delay(500);
 
+            // Values of playlist_items.Index become inconsistent. FixIndexes is called to fix this before exiting.
             var playlist_item =
                 Entity.Instance.playlist_items
                 .Where(item => item.PlaylistId == _playlist.Id && item.TrackId == track.Id)
@@ -172,6 +174,24 @@ namespace Hurricane.Music.Playlist
         {
             Tracks.Clear();
             ShuffleList.Clear();
+        }
+
+        public void FixIndexes()
+        {
+            var playlistItems = Entity.Instance.playlist_items.Where(item => item.PlaylistId == _playlist.Id);
+            var indexFromTrackId = new MultiDictionary<int, int>();
+            for (var i = 0; i < Tracks.Count; i ++)
+            {
+                indexFromTrackId.Add(Tracks[i].Id, i);
+            }
+
+            foreach (var item in playlistItems)
+            {
+                var indexList = indexFromTrackId.GetValueList(item.TrackId);
+                var i = indexList.FirstOrDefault();     // Never default if no bugs
+                item.Index = i;
+                indexFromTrackId.Remove(item.TrackId, i);
+            }
         }
 
         public override bool CanEdit

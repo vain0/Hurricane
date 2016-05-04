@@ -23,6 +23,10 @@ namespace Hurricane.Settings
 
         public override void Save(string programPath)
         {
+            foreach (var playlist in Playlists)
+            {
+                playlist.FixIndexes();
+            }
         }
 
         public static PlaylistSettings Load(string programpath)

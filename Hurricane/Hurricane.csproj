@@ -387,6 +387,7 @@
     <Compile Include="Utilities\GeneralHelper.cs" />
     <Compile Include="Utilities\Keyboard.cs" />
     <Compile Include="Utilities\LevenshteinDistance.cs" />
+    <Compile Include="Utilities\MultiDictionary.cs" />
     <Compile Include="Utilities\Native\CopyDataStruct.cs" />
     <Compile Include="Utilities\Native\Message.cs" />
     <Compile Include="Utilities\Native\POINT.cs" />

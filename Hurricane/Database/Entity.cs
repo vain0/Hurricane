@@ -20,6 +20,7 @@ namespace Hurricane.Database
                 from item in self.playlist_items
                 where item.PlaylistId == playlistId
                 join track in self.tracks on item.TrackId equals track.Id
+                orderby item.Index
                 select track;
         }
     }
