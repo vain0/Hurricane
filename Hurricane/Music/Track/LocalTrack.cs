@@ -51,12 +51,20 @@ namespace Hurricane.Music.Track
         public LocalTrack(string path)
             : base()
         {
-            _localTrack = Entity.Instance.local_tracks.Add(new local_tracks()
+            var localTrack =
+                Entity.Instance.local_tracks
+                .FirstOrDefault(x => x.Path == path);
+            if (localTrack == null)
             {
-                TrackId = Id,
-                Path = path,
-                Extension = System.IO.Path.GetExtension(path).ToUpper().Replace(".", string.Empty)
-            });
+                localTrack = Entity.Instance.local_tracks.Add(new local_tracks()
+                {
+                    TrackId = Id,
+                    Path = path,
+                    Extension = System.IO.Path.GetExtension(path).ToUpper().Replace(".", string.Empty)
+                });
+            }
+
+            _localTrack = localTrack;
         }
 
         public LocalTrack(local_tracks localTrack)
